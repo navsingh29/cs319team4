@@ -15,6 +15,7 @@
 		78E668D61C62FC1400C0CEFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E668D41C62FC1400C0CEFB /* LaunchScreen.storyboard */; };
 		78E668E11C62FC1400C0CEFB /* Banking_With_BiometricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668E01C62FC1400C0CEFB /* Banking_With_BiometricsTests.swift */; };
 		78E668EC1C62FC1400C0CEFB /* Banking_With_BiometricsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668EB1C62FC1400C0CEFB /* Banking_With_BiometricsUITests.swift */; };
+		78E668FA1C6302CF00C0CEFB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668F91C6302CF00C0CEFB /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		78E668E71C62FC1400C0CEFB /* Banking With BiometricsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Banking With BiometricsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E668EB1C62FC1400C0CEFB /* Banking_With_BiometricsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banking_With_BiometricsUITests.swift; sourceTree = "<group>"; };
 		78E668ED1C62FC1400C0CEFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78E668F91C6302CF00C0CEFB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				78E668D21C62FC1400C0CEFB /* Assets.xcassets */,
 				78E668D41C62FC1400C0CEFB /* LaunchScreen.storyboard */,
 				78E668D71C62FC1400C0CEFB /* Info.plist */,
+				78E668F91C6302CF00C0CEFB /* LoginViewController.swift */,
 			);
 			path = "Banking With Biometrics";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E668FA1C6302CF00C0CEFB /* LoginViewController.swift in Sources */,
 				78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */,
 				78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */,
 				78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */,
