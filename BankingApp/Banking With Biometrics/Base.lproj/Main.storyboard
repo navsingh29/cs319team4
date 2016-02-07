@@ -220,17 +220,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-6h-Xo1">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-6h-Xo1">
                                 <rect key="frame" x="267" y="285" width="67" height="30"/>
-                                <state key="normal" title="Log Me In"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Log Me In">
+                                            <attributes>
+                                                <color key="NSColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                                <font key="NSFont" size="15" name="Arial-Black"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <segue destination="49e-Tb-3d3" kind="show" id="YGb-Nk-AJe"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2FQ-Ii-EpW">
+                                <rect key="frame" x="210" y="132" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SDb-Lq-NJS"/>
+                                    <constraint firstAttribute="width" constant="180" id="jrU-hn-PDS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cache Bank Transparent" translatesAutoresizingMaskIntoConstraints="NO" id="vIJ-XX-av1">
+                                <rect key="frame" x="140" y="332" width="320" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="6nO-sr-Ogi"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="210" id="6sc-lk-zqm"/>
+                                    <constraint firstAttribute="width" constant="320" id="Cy3-Hn-4WX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="nxc-Va-v72"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIV-mc-7qb">
+                                <rect key="frame" x="210" y="191" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="VQq-FV-4Qx"/>
+                                    <constraint firstAttribute="width" constant="180" id="tLl-cA-t8T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21176470588235294" green="0.80784313725490198" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fxw-6h-Xo1" firstAttribute="centerY" secondItem="3RY-sl-xEm" secondAttribute="centerY" id="6UB-Xh-RCh"/>
+                            <constraint firstItem="2FQ-Ii-EpW" firstAttribute="top" secondItem="mM8-LM-Ab5" secondAttribute="bottom" constant="112" id="8Sp-B1-b6O"/>
+                            <constraint firstItem="oiz-vk-3Du" firstAttribute="top" secondItem="vIJ-XX-av1" secondAttribute="bottom" constant="58" id="MRv-Dd-Lmi"/>
+                            <constraint firstItem="sIV-mc-7qb" firstAttribute="centerX" secondItem="3RY-sl-xEm" secondAttribute="centerX" id="QZX-ql-d8G"/>
+                            <constraint firstItem="2FQ-Ii-EpW" firstAttribute="centerX" secondItem="3RY-sl-xEm" secondAttribute="centerX" id="bYK-6W-mGt"/>
+                            <constraint firstItem="sIV-mc-7qb" firstAttribute="top" secondItem="2FQ-Ii-EpW" secondAttribute="bottom" constant="29" id="d6l-Ux-CIF"/>
+                            <constraint firstItem="vIJ-XX-av1" firstAttribute="centerX" secondItem="3RY-sl-xEm" secondAttribute="centerX" id="oe0-kE-TtE"/>
                             <constraint firstItem="Fxw-6h-Xo1" firstAttribute="centerX" secondItem="3RY-sl-xEm" secondAttribute="centerX" id="xSo-eB-kHz"/>
                         </constraints>
                     </view>
@@ -261,6 +304,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Cache Bank Transparent" width="2000" height="2000"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
