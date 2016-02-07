@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */; };
 		78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668C91C62FC1400C0CEFB /* AppDelegate.swift */; };
 		78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CB1C62FC1400C0CEFB /* FirstViewController.swift */; };
 		78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
 		78E668C61C62FC1400C0CEFB /* Banking With Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banking With Biometrics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E668C91C62FC1400C0CEFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E668CB1C62FC1400C0CEFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				78E668D41C62FC1400C0CEFB /* LaunchScreen.storyboard */,
 				78E668D71C62FC1400C0CEFB /* Info.plist */,
 				78E668F91C6302CF00C0CEFB /* LoginViewController.swift */,
+				7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */,
 			);
 			path = "Banking With Biometrics";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				78E668FA1C6302CF00C0CEFB /* LoginViewController.swift in Sources */,
 				78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */,
+				7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */,
 				78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */,
 				78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */,
 			);
