@@ -492,6 +492,7 @@
 				78E668F21C62FC1400C0CEFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78E668F31C62FC1400C0CEFB /* Build configuration list for PBXNativeTarget "Banking With BiometricsTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +501,7 @@
 				78E668F51C62FC1400C0CEFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78E668F61C62FC1400C0CEFB /* Build configuration list for PBXNativeTarget "Banking With BiometricsUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +510,7 @@
 				78E668F81C62FC1400C0CEFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
