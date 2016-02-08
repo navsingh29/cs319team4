@@ -8,13 +8,20 @@
 
 import UIKit
 
-class AccountsTableViewController: UITableViewController {
+class TransactionsTableViewController: UITableViewController {
     
-    let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
+    @IBOutlet weak var balance: UILabel!
+    
+    let transactions = [-30.10,-1200.05,10500.50,-850]
+    let transactionNames = ["Gas", "UBC Bookstore", "Work","Apple Store"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Accounts"
+        var sum = 0.0
+        for i in transactions {
+            sum += i
+        }
+        balance.text = "$"+String(sum)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -28,20 +35,16 @@ class AccountsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts.count
+        return transactions.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let identifier = "accounts"
+        let identifier = "cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
-        cell.textLabel!.text = accounts[indexPath.row]
+        cell.textLabel?.text = transactionNames[indexPath.row]
+        cell.detailTextLabel?.text = String(transactions[indexPath.row])
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController
-        let text = sender?.textLabel??.text
-        vc.navigationItem.title = text!
-    }
     
 }
