@@ -9,9 +9,13 @@
 
 import Foundation
 
-struct DataPacket {
+class DataPacket {
     let timestamp: String
-    let values: [String: String]
+    let values = [String: String]()
+    
+    init(datetime: NSDate = NSDate()) {
+        timestamp = datetime.description
+    }
 }
 
 class Cache {
@@ -39,11 +43,13 @@ class Cache {
         // Check if the buffer size has been reached.
         if (data.count >= bufferSize) {
             // Attempt to send our data
-            let result = server.send(data)
-            
-            if (result == true) {
-                // All the data has been sent, clear our cache.
-                data = [DataPacket]()
+            server.send(data) {
+                result in
+                
+                if (result == true) {
+                    // All the data has been sent, clear our cache.
+                    self.data = [DataPacket]()
+                }
             }
         }
     }

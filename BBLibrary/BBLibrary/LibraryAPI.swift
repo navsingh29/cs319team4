@@ -22,7 +22,7 @@ public struct BBConfiguration {
     let cacheSize: Int
     let sendRate: Int
     let enabledComponents: [BBComponents]
-    let callback: (BBResponse)
+    let callback: (BBResponse) -> ()
     //let touchListener // TODO: Implement some object that we can listen to for touches.
 }
 
