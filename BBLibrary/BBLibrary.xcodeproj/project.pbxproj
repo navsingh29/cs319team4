@@ -10,8 +10,9 @@
 		41564CB41C72577B00DBB70E /* BBLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 41564CB31C72577B00DBB70E /* BBLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41564CBB1C72577B00DBB70E /* BBLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CB01C72577B00DBB70E /* BBLibrary.framework */; };
 		41564CC01C72577B00DBB70E /* BBLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CBF1C72577B00DBB70E /* BBLibraryTests.swift */; };
-		41564CD51C72584100DBB70E /* Exposed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CD41C72584100DBB70E /* Exposed.swift */; };
-		419F39121C72634300FF9DA8 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39111C72634300FF9DA8 /* DataHandler.swift */; };
+		41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CD41C72584100DBB70E /* LibraryAPI.swift */; };
+		419F39141C7264F400FF9DA8 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39131C7264F400FF9DA8 /* ServerConnection.swift */; };
+		419F39161C72687500FF9DA8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39151C72687500FF9DA8 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +32,9 @@
 		41564CBA1C72577B00DBB70E /* BBLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41564CBF1C72577B00DBB70E /* BBLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBLibraryTests.swift; sourceTree = "<group>"; };
 		41564CC11C72577B00DBB70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41564CD41C72584100DBB70E /* Exposed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exposed.swift; sourceTree = "<group>"; };
-		419F39111C72634300FF9DA8 /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		41564CD41C72584100DBB70E /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
+		419F39131C7264F400FF9DA8 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
+		419F39151C72687500FF9DA8 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,9 @@
 		41564CD31C72581D00DBB70E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				41564CD41C72584100DBB70E /* Exposed.swift */,
-				419F39111C72634300FF9DA8 /* DataHandler.swift */,
+				41564CD41C72584100DBB70E /* LibraryAPI.swift */,
+				419F39131C7264F400FF9DA8 /* ServerConnection.swift */,
+				419F39151C72687500FF9DA8 /* Cache.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -209,8 +212,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419F39121C72634300FF9DA8 /* DataHandler.swift in Sources */,
-				41564CD51C72584100DBB70E /* Exposed.swift in Sources */,
+				419F39141C7264F400FF9DA8 /* ServerConnection.swift in Sources */,
+				419F39161C72687500FF9DA8 /* Cache.swift in Sources */,
+				41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
