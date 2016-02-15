@@ -23,6 +23,7 @@ public struct BBConfiguration {
     let sendRate: Int
     let enabledComponents: [BBComponents]
     let callback: (BBResponse)
+    //let touchListener // TODO: Implement some object that we can listen to for touches.
 }
 
 public class BBLibrary {

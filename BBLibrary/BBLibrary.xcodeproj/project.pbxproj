@@ -13,6 +13,7 @@
 		41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CD41C72584100DBB70E /* LibraryAPI.swift */; };
 		419F39141C7264F400FF9DA8 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39131C7264F400FF9DA8 /* ServerConnection.swift */; };
 		419F39161C72687500FF9DA8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39151C72687500FF9DA8 /* Cache.swift */; };
+		419F3B281C72722000FF9DA8 /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419F3B1D1C72721200FF9DA8 /* SocketIOClientSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +23,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = 41564CAF1C72577B00DBB70E;
 			remoteInfo = BBLibrary;
+		};
+		419F3B1C1C72721200FF9DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 572EF2191B51F16C00EEBB58;
+			remoteInfo = "SocketIO-iOS";
+		};
+		419F3B1E1C72721200FF9DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 572EF2241B51F16C00EEBB58;
+			remoteInfo = "SocketIO-iOSTests";
+		};
+		419F3B201C72721200FF9DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 572EF2381B51F18A00EEBB58;
+			remoteInfo = "SocketIO-Mac";
+		};
+		419F3B221C72721200FF9DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 572EF2421B51F18A00EEBB58;
+			remoteInfo = "SocketIO-MacTests";
+		};
+		419F3B241C72721200FF9DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57634A161BD9B46A00E19CD7;
+			remoteInfo = "SocketIO-tvOS";
+		};
+		419F3B261C72721200FF9DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57634A3B1BD9B46D00E19CD7;
+			remoteInfo = "SocketIO-tvOSTests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -35,6 +78,7 @@
 		41564CD41C72584100DBB70E /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		419F39131C7264F400FF9DA8 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		419F39151C72687500FF9DA8 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Socket.IO-Client-Swift.xcodeproj"; path = "Socket-IO.0/Socket.IO-Client-Swift.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419F3B281C72722000FF9DA8 /* SocketIOClientSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +104,7 @@
 		41564CA61C72577B00DBB70E = {
 			isa = PBXGroup;
 			children = (
+				419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */,
 				41564CB21C72577B00DBB70E /* BBLibrary */,
 				41564CBE1C72577B00DBB70E /* BBLibraryTests */,
 				41564CB11C72577B00DBB70E /* Products */,
@@ -101,6 +147,19 @@
 				419F39151C72687500FF9DA8 /* Cache.swift */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		419F3B141C72721100FF9DA8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				419F3B1D1C72721200FF9DA8 /* SocketIOClientSwift.framework */,
+				419F3B1F1C72721200FF9DA8 /* SocketIO-iOSTests.xctest */,
+				419F3B211C72721200FF9DA8 /* SocketIOClientSwift.framework */,
+				419F3B231C72721200FF9DA8 /* SocketIO-MacTests.xctest */,
+				419F3B251C72721200FF9DA8 /* SocketIO.framework */,
+				419F3B271C72721200FF9DA8 /* SocketIO-tvOSTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +241,12 @@
 			mainGroup = 41564CA61C72577B00DBB70E;
 			productRefGroup = 41564CB11C72577B00DBB70E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 419F3B141C72721100FF9DA8 /* Products */;
+					ProjectRef = 419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				41564CAF1C72577B00DBB70E /* BBLibrary */,
@@ -189,6 +254,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		419F3B1D1C72721200FF9DA8 /* SocketIOClientSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SocketIOClientSwift.framework;
+			remoteRef = 419F3B1C1C72721200FF9DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		419F3B1F1C72721200FF9DA8 /* SocketIO-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SocketIO-iOSTests.xctest";
+			remoteRef = 419F3B1E1C72721200FF9DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		419F3B211C72721200FF9DA8 /* SocketIOClientSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SocketIOClientSwift.framework;
+			remoteRef = 419F3B201C72721200FF9DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		419F3B231C72721200FF9DA8 /* SocketIO-MacTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SocketIO-MacTests.xctest";
+			remoteRef = 419F3B221C72721200FF9DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		419F3B251C72721200FF9DA8 /* SocketIO.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SocketIO.framework;
+			remoteRef = 419F3B241C72721200FF9DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		419F3B271C72721200FF9DA8 /* SocketIO-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SocketIO-tvOSTests.xctest";
+			remoteRef = 419F3B261C72721200FF9DA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		41564CAE1C72577B00DBB70E /* Resources */ = {
