@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41564CD61C72586C00DBB70E /* BBLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CD01C72577D00DBB70E /* BBLibrary.framework */; };
 		7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */; };
 		788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */; };
 		78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668C91C62FC1400C0CEFB /* AppDelegate.swift */; };
@@ -21,6 +22,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		41564CCF1C72577D00DBB70E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 41564CB01C72577B00DBB70E;
+			remoteInfo = BBLibrary;
+		};
+		41564CD11C72577D00DBB70E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 41564CBA1C72577B00DBB70E;
+			remoteInfo = BBLibraryTests;
+		};
 		78E668DD1C62FC1400C0CEFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78E668BE1C62FC1400C0CEFB /* Project object */;
@@ -38,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BBLibrary.xcodeproj; path = BBLibrary/BBLibrary.xcodeproj; sourceTree = "<group>"; };
 		7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
 		788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewController.swift; sourceTree = "<group>"; };
 		78E668C61C62FC1400C0CEFB /* Banking With Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banking With Biometrics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41564CD61C72586C00DBB70E /* BBLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,9 +99,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41564CCB1C72577B00DBB70E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41564CD01C72577D00DBB70E /* BBLibrary.framework */,
+				41564CD21C72577D00DBB70E /* BBLibraryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78E668BD1C62FC1400C0CEFB = {
 			isa = PBXGroup;
 			children = (
+				41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */,
 				78E668C81C62FC1400C0CEFB /* Banking With Biometrics */,
 				78E668DF1C62FC1400C0CEFB /* Banking With BiometricsTests */,
 				78E668EA1C62FC1400C0CEFB /* Banking With BiometricsUITests */,
@@ -227,6 +254,12 @@
 			mainGroup = 78E668BD1C62FC1400C0CEFB;
 			productRefGroup = 78E668C71C62FC1400C0CEFB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 41564CCB1C72577B00DBB70E /* Products */;
+					ProjectRef = 41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				78E668C51C62FC1400C0CEFB /* Banking With Biometrics */,
@@ -235,6 +268,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		41564CD01C72577D00DBB70E /* BBLibrary.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BBLibrary.framework;
+			remoteRef = 41564CCF1C72577D00DBB70E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		41564CD21C72577D00DBB70E /* BBLibraryTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BBLibraryTests.xctest;
+			remoteRef = 41564CD11C72577D00DBB70E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		78E668C41C62FC1400C0CEFB /* Resources */ = {
