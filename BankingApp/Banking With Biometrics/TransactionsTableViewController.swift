@@ -12,8 +12,8 @@ class TransactionsTableViewController: UITableViewController {
     
     @IBOutlet weak var balance: UILabel!
     
-    let transactions = [-30.10,-1200.05,10500.50,-850]
-    let transactionNames = ["Gas", "UBC Bookstore", "Work","Apple Store"]
+    let transactions = [-30.10,-4999.05,18500.50,-850, 8500, -500, -890.99, -800, -17999.99]
+    let transactionNames = ["Gas", "UBC Bookstore", "Google Inc.", "Apple Store", "Freelance Work", "Microsoft Store", "Best Buy", "Landlord", "UBC Tuition"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class TransactionsTableViewController: UITableViewController {
         for i in transactions {
             sum += i
         }
-        balance.text = "$"+String(sum)
+        balance.text = "$"+String(format:"%.2f", sum)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
