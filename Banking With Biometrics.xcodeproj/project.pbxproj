@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		41564CD61C72586C00DBB70E /* BBLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CD01C72577D00DBB70E /* BBLibrary.framework */; };
 		7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */; };
+		782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 782A58261C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld */; };
 		788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */; };
 		78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668C91C62FC1400C0CEFB /* AppDelegate.swift */; };
 		78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CB1C62FC1400C0CEFB /* FirstViewController.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BBLibrary.xcodeproj; path = BBLibrary/BBLibrary.xcodeproj; sourceTree = "<group>"; };
 		7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
+		782A58271C78456300F53C98 /* BankingWithBiometrics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BankingWithBiometrics.xcdatamodel; sourceTree = "<group>"; };
 		788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewController.swift; sourceTree = "<group>"; };
 		78E668C61C62FC1400C0CEFB /* Banking With Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banking With Biometrics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E668C91C62FC1400C0CEFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				78E668C91C62FC1400C0CEFB /* AppDelegate.swift */,
+				782A58261C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld */,
 				78E668CB1C62FC1400C0CEFB /* FirstViewController.swift */,
 				78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */,
 				78E668CF1C62FC1400C0CEFB /* Main.storyboard */,
@@ -324,6 +327,7 @@
 				7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */,
 				78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */,
 				78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */,
+				782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +575,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		782A58261C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				782A58271C78456300F53C98 /* BankingWithBiometrics.xcdatamodel */,
+			);
+			currentVersion = 782A58271C78456300F53C98 /* BankingWithBiometrics.xcdatamodel */;
+			path = BankingWithBiometrics.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 78E668BE1C62FC1400C0CEFB /* Project object */;
 }
