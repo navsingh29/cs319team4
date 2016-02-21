@@ -14,21 +14,31 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    var usernameText: String = ""
+    var passwordText: String = ""
     
     @IBAction func onLoginClicked(sender: UIButton) {
-        let loginSuccess = areCredentialsCorrect(username.text!, password: password.text!)
-        print("Credentials matched? " + String(loginSuccess))
+        usernameText = username.text!
+        passwordText = password.text!
+        let loginSuccess = areCredentialsCorrect(usernameText, password: passwordText)
+        print("Login success: \(String(loginSuccess))")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func register(segue:UIStoryboardSegue) {
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func cancel(segue:UIStoryboardSegue) {
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "loginSegue" {
+            let loginSuccess = areCredentialsCorrect(username.text!, password: password.text!)
+            return loginSuccess
+        }
+        return true
+    }
+    
     
     func areCredentialsCorrect(username: String, password: String) -> Bool {
         //1
@@ -45,6 +55,7 @@ class LoginViewController: UIViewController {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             let users = results as! [NSManagedObject]
+            print("Number of users found: \(users.count)")
             if users.count == 1 {
                 return true
             }

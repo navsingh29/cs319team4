@@ -318,10 +318,10 @@
             </objects>
             <point key="canvasLocation" x="1600" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="ncA-JE-hkX">
             <objects>
-                <viewController id="YwK-bT-edU" sceneMemberID="viewController">
+                <viewController id="YwK-bT-edU" customClass="RegisterViewController" customModule="Banking_With_Biometrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jLa-PJ-reb"/>
                         <viewControllerLayoutGuide type="bottom" id="AU6-jh-nJ0"/>
@@ -353,19 +353,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUU-am-39M">
-                                <rect key="frame" x="276" y="312" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adS-wA-0Kf">
                                 <rect key="frame" x="272" y="255" width="57" height="30"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="onRegisterTapped:" destination="YwK-bT-edU" eventType="touchUpInside" id="uDv-8v-T9z"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7H9-dZ-Zlt">
                                 <rect key="frame" x="258" y="189" width="84" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUU-am-39M">
+                                <rect key="frame" x="276" y="312" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="OWx-v2-MhE" kind="unwind" unwindAction="cancel:" id="LfK-r6-ML2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -387,10 +393,16 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="password" destination="7H9-dZ-Zlt" id="OaW-my-WLL"/>
+                        <outlet property="username" destination="2IJ-pY-ZfZ" id="ex2-gA-rmD"/>
+                        <segue destination="OWx-v2-MhE" kind="unwind" identifier="unwindAndRegister" unwindAction="register:" id="utY-3m-l6O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ig4-Xp-NPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OWx-v2-MhE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-709" y="-679"/>
+            <point key="canvasLocation" x="-722" y="-678"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Zfx-Vq-ePn">
@@ -439,7 +451,8 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <segue destination="49e-Tb-3d3" kind="show" id="YGb-Nk-AJe"/>
+                                            <action selector="onLoginClicked:" destination="lg9-Bk-rLn" eventType="touchUpInside" id="Oya-PS-Hkr"/>
+                                            <segue destination="49e-Tb-3d3" kind="show" identifier="loginSegue" id="YGb-Nk-AJe"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKU-il-8qz">
@@ -482,6 +495,10 @@
                             <constraint firstItem="AdL-Bk-dP4" firstAttribute="centerX" secondItem="3RY-sl-xEm" secondAttribute="centerX" id="wtB-eG-GLK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="sIV-mc-7qb" id="Kce-Zk-Pmf"/>
+                        <outlet property="username" destination="2FQ-Ii-EpW" id="12b-p9-gAu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1S-9F-gJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
