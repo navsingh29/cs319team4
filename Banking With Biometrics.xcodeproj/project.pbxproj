@@ -14,6 +14,10 @@
 		78DE7A181C792829008AC288 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE7A171C792829008AC288 /* RegisterViewController.swift */; };
 		78DE7A251C7941F3008AC288 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE7A231C7941F3008AC288 /* User+CoreDataProperties.swift */; };
 		78DE7A261C7941F3008AC288 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE7A241C7941F3008AC288 /* User.swift */; };
+		78E3F6A51C7A9CA50031B244 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3F6A01C7A9CA50031B244 /* Account+CoreDataProperties.swift */; };
+		78E3F6A61C7A9CA50031B244 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3F6A11C7A9CA50031B244 /* Account.swift */; };
+		78E3F6A71C7A9CA50031B244 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3F6A21C7A9CA50031B244 /* Transaction+CoreDataProperties.swift */; };
+		78E3F6A81C7A9CA50031B244 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3F6A31C7A9CA50031B244 /* Transaction.swift */; };
 		78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668C91C62FC1400C0CEFB /* AppDelegate.swift */; };
 		78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CB1C62FC1400C0CEFB /* FirstViewController.swift */; };
 		78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */; };
@@ -64,6 +68,10 @@
 		78DE7A171C792829008AC288 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		78DE7A231C7941F3008AC288 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		78DE7A241C7941F3008AC288 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		78E3F6A01C7A9CA50031B244 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		78E3F6A11C7A9CA50031B244 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		78E3F6A21C7A9CA50031B244 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		78E3F6A31C7A9CA50031B244 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		78E668C61C62FC1400C0CEFB /* Banking With Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banking With Biometrics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E668C91C62FC1400C0CEFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E668CB1C62FC1400C0CEFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +127,10 @@
 		78DE7A281C794216008AC288 /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
+				78E3F6A01C7A9CA50031B244 /* Account+CoreDataProperties.swift */,
+				78E3F6A11C7A9CA50031B244 /* Account.swift */,
+				78E3F6A21C7A9CA50031B244 /* Transaction+CoreDataProperties.swift */,
+				78E3F6A31C7A9CA50031B244 /* Transaction.swift */,
 				78DE7A231C7941F3008AC288 /* User+CoreDataProperties.swift */,
 				78DE7A241C7941F3008AC288 /* User.swift */,
 			);
@@ -339,15 +351,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E668FA1C6302CF00C0CEFB /* LoginViewController.swift in Sources */,
+				78E3F6A61C7A9CA50031B244 /* Account.swift in Sources */,
 				78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */,
 				788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */,
 				78DE7A181C792829008AC288 /* RegisterViewController.swift in Sources */,
 				7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */,
 				78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */,
+				78E3F6A51C7A9CA50031B244 /* Account+CoreDataProperties.swift in Sources */,
+				78E3F6A71C7A9CA50031B244 /* Transaction+CoreDataProperties.swift in Sources */,
 				78E668CC1C62FC1400C0CEFB /* FirstViewController.swift in Sources */,
 				782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */,
 				78DE7A261C7941F3008AC288 /* User.swift in Sources */,
 				78DE7A251C7941F3008AC288 /* User+CoreDataProperties.swift in Sources */,
+				78E3F6A81C7A9CA50031B244 /* Transaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

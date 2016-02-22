@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1509" minimumToolsVersion="Xcode 7.0">
-    <entity name="Account" syncable="YES">
+    <entity name="Account" representedClassName=".Account" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="acount" inverseEntity="Transaction" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="accounts" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Transaction" syncable="YES">
+    <entity name="Transaction" representedClassName=".Transaction" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="acount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="transactions" inverseEntity="Account" syncable="YES"/>
@@ -22,8 +22,8 @@
         </compoundIndexes>
     </entity>
     <elements>
-        <element name="User" positionX="-270" positionY="-108" width="128" height="88"/>
-        <element name="Account" positionX="-74" positionY="-151" width="128" height="88"/>
+        <element name="Account" positionX="-74" positionY="-151" width="128" height="90"/>
         <element name="Transaction" positionX="124" positionY="-81" width="128" height="90"/>
+        <element name="User" positionX="-270" positionY="-108" width="128" height="88"/>
     </elements>
 </model>

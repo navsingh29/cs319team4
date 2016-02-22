@@ -1,5 +1,5 @@
 //
-//  User+CoreDataProperties.swift
+//  Account+CoreDataProperties.swift
 //  Banking With Biometrics
 //
 //  Created by Navpreet Brar on 2016-02-21.
@@ -12,10 +12,10 @@
 import Foundation
 import CoreData
 
-extension User {
+extension Account {
 
-    @NSManaged var password: String?
-    @NSManaged var username: String?
-    @NSManaged var accounts: NSSet?
+    @NSManaged var name: String?
+    @NSManaged var transactions: NSSet?
+    @NSManaged var user: User?
 
 }
