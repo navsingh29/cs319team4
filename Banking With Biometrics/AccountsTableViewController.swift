@@ -12,15 +12,30 @@ class AccountsTableViewController: UITableViewController {
     
     let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.title = "Accounts"
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func addIconTapped(sender: UIBarButtonItem) {
+        createAlertView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func createAlertView(){
+        let alert: UIAlertController = UIAlertController(title: "Add a New Account", message: nil, preferredStyle: .Alert)
+        
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.placeholder = "Name of Account"
+        })
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+             print("TODO: add \(textField.text) to DB")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //self.navigationItem.title = "Accounts"
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

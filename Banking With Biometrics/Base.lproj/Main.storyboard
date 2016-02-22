@@ -203,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="2328" y="834"/>
         </scene>
-        <!--Accounts Table View Controller-->
+        <!--Accounts-->
         <scene sceneID="pst-lA-CwH">
             <objects>
                 <tableViewController id="GM2-IJ-rom" customClass="AccountsTableViewController" customModule="Banking_With_Biometrics" customModuleProvider="target" sceneMemberID="viewController">
@@ -230,7 +230,13 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" id="Ggq-OQ-Q3J"/>
+                    <navigationItem key="navigationItem" title="Accounts" id="Ggq-OQ-Q3J">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0HC-1Z-3FV">
+                            <connections>
+                                <action selector="addIconTapped:" destination="GM2-IJ-rom" id="Mvh-JL-ZkS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bP-Cf-meE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
