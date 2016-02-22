@@ -17,11 +17,17 @@ extension User {
     @NSManaged var password: String?
     @NSManaged var username: String?
 
-    class func createInManagedObjectContext(moc: NSManagedObjectContext, username: String, password: String) -> User {
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, username: String, password: String) -> User? {
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: moc) as! User
         newItem.username = username
         newItem.password = password
-        return newItem
+        do {
+            try moc.save()
+            return newItem
+        } catch let error as NSError {
+            print("Could not create new user \(error), \(error.userInfo)")
+        }
+        return nil
     }
     
     class func doesUsernameExist(moc: NSManagedObjectContext, username: String) -> Bool {
