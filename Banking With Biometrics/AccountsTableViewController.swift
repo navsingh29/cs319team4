@@ -10,6 +10,7 @@ import UIKit
 
 class AccountsTableViewController: UITableViewController {
     
+    var user: User? = nil
     let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
     
     @IBAction func addIconTapped(sender: UIBarButtonItem) {
@@ -25,6 +26,9 @@ class AccountsTableViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let moc = appDelegate.managedObjectContext
+            Account.create(moc, user: self.user, accountName: textField.text)
              print("TODO: add \(textField.text) to DB")
         }))
         

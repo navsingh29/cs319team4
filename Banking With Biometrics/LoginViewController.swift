@@ -14,12 +14,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    var usernameText: String = ""
-    var passwordText: String = ""
+    var user: User?
     
     @IBAction func onLoginClicked(sender: UIButton) {
-        usernameText = username.text!
-        passwordText = password.text!
+        let usernameText = username.text!
+        let passwordText = password.text!
         let loginSuccess = areCredentialsCorrect(usernameText, password: passwordText)
         print("Login success: \(String(loginSuccess))")
     }
@@ -39,15 +38,20 @@ class LoginViewController: UIViewController {
         return true
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loginSegue" {
+            let tab = segue.destinationViewController as! UITabBarController
+            let nav = tab.viewControllers![0] as! UINavigationController
+            let accounts = nav.topViewController as! AccountsTableViewController
+            accounts.user = user
+        }
+    }
     
     func areCredentialsCorrect(username: String, password: String) -> Bool {
-        if username == "admin" && password == "admin" {
-            return true
-        }
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        return User.validateUser(managedContext, username: username, password: password) != nil
+        user = User.validateUser(managedContext, username: username, password: password)
+        return  user != nil
     }
     
 }

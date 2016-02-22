@@ -12,6 +12,17 @@ import CoreData
 
 class Account: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    class func create(moc: NSManagedObjectContext, user: User?, accountName: String?) -> Account? {
+        let newAccount = NSEntityDescription.insertNewObjectForEntityForName("Account", inManagedObjectContext: moc) as! Account
+        newAccount.user = user
+        newAccount.name = accountName
+        do {
+            try moc.save()
+            return newAccount
+        } catch let error as NSError {
+            print("Could not create new account \(error), \(error.userInfo)")
+        }
+        return nil
+    }
 
 }
