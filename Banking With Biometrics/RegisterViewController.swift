@@ -24,46 +24,14 @@ class RegisterViewController : UIViewController {
             return
         }
         
-        if areCredentialsCorrect(usernameString, password: passwordString) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        if User.doesUsernameExist(managedContext, username: usernameString) {
             return // User already exists in db
         }
         
-        addUserToDB(usernameString, password: passwordString)
+        User.createInManagedObjectContext(managedContext, username: usernameString, password: passwordString)
         self.performSegueWithIdentifier("unwindAndRegister", sender: self)
-    }
-    
-    func addUserToDB(user: String, password: String) {
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: managedContext) as! User
-        newItem.username = user
-        newItem.password = password
-    }
-    
-    func areCredentialsCorrect(username: String, password: String) -> Bool {
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username, password)
-        
-        //3
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            let users = results as! [NSManagedObject]
-            print("Number of users found: \(users.count)")
-            if users.count == 1 {
-                return true
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return false
     }
 }

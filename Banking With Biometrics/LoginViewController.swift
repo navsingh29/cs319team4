@@ -41,28 +41,9 @@ class LoginViewController: UIViewController {
     
     
     func areCredentialsCorrect(username: String, password: String) -> Bool {
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username, password)
-        
-        //3
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            let users = results as! [NSManagedObject]
-            print("Number of users found: \(users.count)")
-            if users.count == 1 {
-                return true
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return false
+        return User.validateUser(managedContext, username: username, password: password) != nil
     }
     
 }
