@@ -10,7 +10,7 @@ import UIKit
 
 class AccountsTableViewController: UITableViewController {
     
-    var user: User? = nil
+    var user: User?
     let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
     
     @IBAction func addIconTapped(sender: UIBarButtonItem) {

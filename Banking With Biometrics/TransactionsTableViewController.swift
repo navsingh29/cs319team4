@@ -15,6 +15,9 @@ class TransactionsTableViewController: UITableViewController {
     let transactions = [-30.10,-4999.05,18500.50,-850, 8500, -500, -890.99, -800, -17999.99]
     let transactionNames = ["Gas", "UBC Bookstore", "Google Inc.", "Apple Store", "Freelance Work", "Microsoft Store", "Best Buy", "Landlord", "UBC Tuition"]
     
+    @IBAction func cancelUnwindToTransactionsTableViewController(segue:UIStoryboardSegue) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var sum = 0.0
