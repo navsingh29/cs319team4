@@ -7,10 +7,12 @@
 //
 
 import XCTest
+import SocketIOClientSwift
 @testable import BBLibrary
 
 class BBLibraryTests: XCTestCase {
     
+    let serverIP = "localhost:5000"
     //var config: BBConfiguration;
    
     override func setUp() {
@@ -36,7 +38,8 @@ class BBLibraryTests: XCTestCase {
     
     func testServerUserIDRequirement() {
         let expectation = expectationWithDescription("Data send to server")
-        let server = ServerConnection(ip: "184.66.140.77:8095", domainID: "test", callback: {_ in})
+        let server = ServerConnection(ip: serverIP, domainID: "test", callback: {_ in})
+        //let server = ServerConnection(ip: "184.66.140.77:8095", domainID: "test", callback: {_ in})
         let data = [DataPacket(data: [String:String]())]
         var outcome = false
         
@@ -55,21 +58,23 @@ class BBLibraryTests: XCTestCase {
     
     func testServerSend() {
         let expectation = expectationWithDescription("Data send to server")
-        let server = ServerConnection(ip: "184.66.140.77:8095", domainID: "test", callback: {_ in})
-        let data = [DataPacket(data: [String:String]())]
+        let server = ServerConnection(ip: serverIP, domainID: "test", callback: {_ in})
+        //let server = ServerConnection(ip: "184.66.140.77:8095", domainID: "test", callback: {_ in})
+        let dummyData = [DataPacket(data: [String:String]())]
         var outcome = false
         
-        server.setUserID("testuser");
+        server.setUserID("testuser")
         
-        server.send(data) {
+        sleep(5)
+        
+        server.send(dummyData) {
             result in
             outcome = result
             expectation.fulfill()
         }
-
+        
         self.waitForExpectationsWithTimeout(5) {
             error in // TODO: Test error
-            
             XCTAssert(outcome, "Server failed to send data.")
         }
     }

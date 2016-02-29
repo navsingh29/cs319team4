@@ -21,22 +21,27 @@ internal class ServerConnection {
         self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [.Log(true), .Secure(true)])
         
         // TODO: Remove this test code.
+        self.socket.on("connect") { data, ack in
+            print("|| Socket Connected")
+        }
+        
         self.socket.onAny {
-            print("Got event: \($0.event), with items: \($0.items)")
+            print("|| Got event: \($0.event), with items: \($0.items)")
         }
         // END test code
         
+        print("|| Starting server connection")
         self.socket.connect()
     }
     
     func send(data: [DataPacket], resultHandler: (Bool) -> ()) {
-        if userID == "" {
+        if socket.status != .Connected {
             // There is no authorized user yet to send this data for. Try again once the user has logged in.
-            print("No authorized user to send data for");
+            print("|| No authorized user to send data for");
             resultHandler(false)
-        } else if socket.status != .Connected {
+        } else if userID == "" {
             // The server is not connected.
-            print("Server is not connected");
+            print("|| Server is not connected");
             resultHandler(false)
         } else {
             socket.emitWithAck("data", data)(timeoutAfter: 0, callback: onAck(resultHandler))
