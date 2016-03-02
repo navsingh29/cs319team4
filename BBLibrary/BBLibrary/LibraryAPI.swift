@@ -19,26 +19,44 @@ public enum BBResponse {
 
 public struct BBConfiguration {
     let serverIP: String
+    let domainID: String
     let cacheSize: Int
     let sendRate: Int
     let enabledComponents: [BBComponents]
-    let callback: (BBResponse) -> ()
+    var callback: (BBResponse) -> ()
     //let touchListener // TODO: Implement some object that we can listen to for touches.
 }
 
 public class BBLibrary {
+    public let version = "1.0"
     internal let config: BBConfiguration // Use of "let" (instead of "var") signals that this value cannot be changed.
+    
+    private let server: ServerConnection
+    private let cache: Cache
     
     public init(args: BBConfiguration) {
         self.config = args
         
-        let uplink = ServerConnection(ip: args.serverIP, callback: args.callback)
-        let cache = Cache(server: uplink, size: args.cacheSize, rate: args.sendRate)
+        self.server = ServerConnection(ip: args.serverIP, domainID: args.domainID, callback: args.callback)
+        self.cache = Cache(server: server, size: args.cacheSize, rate: args.sendRate)
         
-        // Initialize all data capturers.
-        for component in BBComponents.allValues {
-            // For example:
-            // DataCapturer(cache)
+        if config.enabledComponents.contains(.KeyEvents) {
+            // TODO: Initialize the Key Events Capturer
+            // Don't forget to pass the cache object to your new class.
         }
+        
+        if config.enabledComponents.contains(.TouchEvents) {
+            // TODO: Initialize the Touch Events Capturer
+            // Don't forget to pass the cache object to your new class.
+        }
+        
+        if config.enabledComponents.contains(.PhoneData) {
+            // TODO: Initialize the Phone Data Capturer
+            // Don't forget to pass the cache object to your new class.
+        }
+    }
+    
+    public func setUserID(userID: String) {
+        self.server.setUserID(userID)
     }
 }

@@ -11,10 +11,11 @@ import Foundation
 
 class DataPacket {
     let timestamp: String
-    let values = [String: String]()
+    let values: [String:String];
     
-    init(datetime: NSDate = NSDate()) {
-        timestamp = datetime.description
+    init(data: [String:String], datetime: NSDate = NSDate()) {
+        self.values = data;
+        self.timestamp = datetime.description
     }
 }
 
