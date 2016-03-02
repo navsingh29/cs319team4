@@ -12,7 +12,11 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+//    var window: UIWindow?
+    lazy var window: UIWindow? = {
+        let window = AppUiWin()
+        return window
+    }()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -104,5 +108,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+//    var customWindow: MyCustomWindow?
+//    var window: UIWindow? {
+//        get {
+//            customWindow = customWindow ?? MyCustomWindow(frame: UIScreen.mainScreen().bounds)
+//            return customWindow
+//        }
+//        set { }
+//    }
 }
 
