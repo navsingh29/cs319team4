@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var passwordMismatch: UILabel!
     
     var user: User?
     
@@ -20,6 +21,9 @@ class LoginViewController: UIViewController {
         let usernameText = username.text!
         let passwordText = password.text!
         let loginSuccess = areCredentialsCorrect(usernameText, password: passwordText)
+        if !loginSuccess {
+            passwordMismatch.hidden = false
+        }
         print("Login success: \(String(loginSuccess))")
     }
     
