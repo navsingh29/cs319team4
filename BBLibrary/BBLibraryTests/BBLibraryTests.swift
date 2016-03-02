@@ -12,7 +12,8 @@ import SocketIOClientSwift
 
 class BBLibraryTests: XCTestCase {
     
-    let serverIP = "localhost:5000"
+    let serverIP = "http://localhost:8080"
+    let domainID = "test"
     //var config: BBConfiguration;
    
     override func setUp() {
@@ -36,10 +37,23 @@ class BBLibraryTests: XCTestCase {
         super.tearDown()
     }
     
+    func testServerConnection() {
+        let expectation = expectationWithDescription("Connect to server")
+        let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
+        
+        server.socket.on("connect") { data, ack in
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(5) {
+            error in // TODO: Test error
+            XCTAssert(server.socket.status == .Connected);
+        }
+    }
+    
     func testServerUserIDRequirement() {
         let expectation = expectationWithDescription("Data send to server")
-        let server = ServerConnection(ip: serverIP, domainID: "test", callback: {_ in})
-        //let server = ServerConnection(ip: "184.66.140.77:8095", domainID: "test", callback: {_ in})
+        let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
         let data = [DataPacket(data: [String:String]())]
         var outcome = false
         
@@ -57,23 +71,22 @@ class BBLibraryTests: XCTestCase {
     }
     
     func testServerSend() {
-        let expectation = expectationWithDescription("Data send to server")
-        let server = ServerConnection(ip: serverIP, domainID: "test", callback: {_ in})
-        //let server = ServerConnection(ip: "184.66.140.77:8095", domainID: "test", callback: {_ in})
+        let expectation = expectationWithDescription("Send data to server")
+        let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
         let dummyData = [DataPacket(data: [String:String]())]
         var outcome = false
         
         server.setUserID("testuser")
         
-        sleep(5)
-        
-        server.send(dummyData) {
-            result in
-            outcome = result
-            expectation.fulfill()
+        server.socket.on("connect") { data, ack in
+            server.send(dummyData) {
+                result in
+                outcome = result
+                expectation.fulfill()
+            }
         }
         
-        self.waitForExpectationsWithTimeout(5) {
+        self.waitForExpectationsWithTimeout(10) {
             error in // TODO: Test error
             XCTAssert(outcome, "Server failed to send data.")
         }

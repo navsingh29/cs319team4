@@ -18,7 +18,7 @@ internal class ServerConnection {
     init(ip: String, domainID: String, callback: (BBResponse) -> ()) {
         self.domainID = domainID
         self.authHandler = callback
-        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [.Log(true), .Secure(true)])
+        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [.Log(true)/*, .Secure(true)*/])
         
         // TODO: Remove this test code.
         self.socket.on("connect") { data, ack in
@@ -37,14 +37,14 @@ internal class ServerConnection {
     func send(data: [DataPacket], resultHandler: (Bool) -> ()) {
         if socket.status != .Connected {
             // There is no authorized user yet to send this data for. Try again once the user has logged in.
-            print("|| No authorized user to send data for");
+            print("|| Server is not connected");
             resultHandler(false)
         } else if userID == "" {
             // The server is not connected.
-            print("|| Server is not connected");
+            print("|| No authorized user to send data for");
             resultHandler(false)
         } else {
-            socket.emitWithAck("data", data)(timeoutAfter: 0, callback: onAck(resultHandler))
+            socket.emitWithAck("data", prepareDictionary(data))(timeoutAfter: 0, callback: onAck(resultHandler))
             // TODO: Handle a timeout.
         }
     }
