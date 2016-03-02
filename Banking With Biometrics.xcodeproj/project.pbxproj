@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41564CD61C72586C00DBB70E /* BBLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CD01C72577D00DBB70E /* BBLibrary.framework */; };
 		7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */; };
 		782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 782A58261C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld */; };
+		785A910E1C86CE3900EEC1D6 /* BBLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CD01C72577D00DBB70E /* BBLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */; };
 		78DE7A181C792829008AC288 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE7A171C792829008AC288 /* RegisterViewController.swift */; };
 		78DE7A251C7941F3008AC288 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE7A231C7941F3008AC288 /* User+CoreDataProperties.swift */; };
@@ -44,6 +44,13 @@
 			remoteGlobalIDString = 41564CBA1C72577B00DBB70E;
 			remoteInfo = BBLibraryTests;
 		};
+		785A910F1C86CE3900EEC1D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 41564CAF1C72577B00DBB70E;
+			remoteInfo = BBLibrary;
+		};
 		78E668DD1C62FC1400C0CEFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78E668BE1C62FC1400C0CEFB /* Project object */;
@@ -59,6 +66,20 @@
 			remoteInfo = "Banking With Biometrics";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		785A91111C86CE3A00EEC1D6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				785A910E1C86CE3900EEC1D6 /* BBLibrary.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BBLibrary.xcodeproj; path = BBLibrary/BBLibrary.xcodeproj; sourceTree = "<group>"; };
@@ -94,7 +115,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41564CD61C72586C00DBB70E /* BBLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,10 +226,12 @@
 				78E668C21C62FC1400C0CEFB /* Sources */,
 				78E668C31C62FC1400C0CEFB /* Frameworks */,
 				78E668C41C62FC1400C0CEFB /* Resources */,
+				785A91111C86CE3A00EEC1D6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				785A91101C86CE3900EEC1D6 /* PBXTargetDependency */,
 			);
 			name = "Banking With Biometrics";
 			productName = "Banking With Biometrics";
@@ -386,6 +408,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		785A91101C86CE3900EEC1D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BBLibrary;
+			targetProxy = 785A910F1C86CE3900EEC1D6 /* PBXContainerItemProxy */;
+		};
 		78E668DE1C62FC1400C0CEFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 78E668C51C62FC1400C0CEFB /* Banking With Biometrics */;
@@ -505,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Banking With Biometrics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cs319.team4.Banking-With-Biometrics";
@@ -516,6 +544,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Banking With Biometrics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cs319.team4.Banking-With-Biometrics";
