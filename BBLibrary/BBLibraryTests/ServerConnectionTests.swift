@@ -10,7 +10,7 @@ import XCTest
 import SocketIOClientSwift
 @testable import BBLibrary
 
-class BBLibraryTests: XCTestCase {
+class ServerConnectionTests: XCTestCase {
     
     let serverIP = "http://localhost:8080"
     let domainID = "test"
@@ -19,17 +19,6 @@ class BBLibraryTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        /*
-        self.config = BBConfiguration(
-            serverIP: "184.66.140.77:8095",
-            domainID: "test",
-            cacheSize: 3,
-            sendRate: 2,
-            enabledComponents: BBComponents.allValues,
-            callback: {_ in}
-        )
-        */
     }
     
     override func tearDown() {
@@ -86,7 +75,7 @@ class BBLibraryTests: XCTestCase {
             }
         }
         
-        self.waitForExpectationsWithTimeout(10) {
+        self.waitForExpectationsWithTimeout(20) {
             error in // TODO: Test error
             XCTAssert(outcome, "Server failed to send data.")
         }

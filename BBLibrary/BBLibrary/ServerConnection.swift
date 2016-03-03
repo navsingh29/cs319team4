@@ -44,7 +44,7 @@ internal class ServerConnection {
             print("|| No authorized user to send data for");
             resultHandler(false)
         } else {
-            socket.emitWithAck("data", prepareDictionary(data))(timeoutAfter: 0, callback: onAck(resultHandler))
+            socket.emitWithAck("data", prepareDictionary(data))(timeoutAfter: 0, callback: onAck(resultHandler));
             // TODO: Handle a timeout.
         }
     }
