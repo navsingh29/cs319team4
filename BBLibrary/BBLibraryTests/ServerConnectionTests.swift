@@ -14,7 +14,6 @@ class ServerConnectionTests: XCTestCase {
     
     let serverIP = "http://localhost:8080"
     let domainID = "test"
-    //var config: BBConfiguration;
    
     override func setUp() {
         super.setUp()
@@ -82,11 +81,6 @@ class ServerConnectionTests: XCTestCase {
     }
     
     /*
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
