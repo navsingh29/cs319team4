@@ -12,6 +12,7 @@ import SocketIOClientSwift
 
 class CacheTests: XCTestCase {
     
+    //let serverIP = "http://184.66.140.77:8095"
     let serverIP = "http://localhost:8080"
     let domainID = "test"
     
@@ -26,8 +27,7 @@ class CacheTests: XCTestCase {
     }
     
     func testCacheStorage() {
-        let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
-        let cache = Cache(server: server, size: 10, rate: 10)
+        let cache = Cache(server: DummyServerConnection(), size: 10, rate: 10)
         let packet = DataPacket(data: [String:String]())
         
         XCTAssertEqual(cache.data.count, 0)
@@ -38,8 +38,7 @@ class CacheTests: XCTestCase {
     }
     
     func testCacheLimit() {
-        let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
-        let cache = Cache(server: server, size: 1, rate: 10)
+        let cache = Cache(server: DummyServerConnection(), size: 1, rate: 10)
         let packet = DataPacket(data: [String:String]())
         
         XCTAssertEqual(cache.data.count, 0)
@@ -50,19 +49,30 @@ class CacheTests: XCTestCase {
     }
     
     func testSendRate() {
-        let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
+        let server = DummyServerConnection()
         let cache = Cache(server: server, size: 10, rate: 2)
         let packet = DataPacket(data: [String:String]())
         
         server.setUserID("testuser")
-        sleep(5) // Give the server time to connect.
         
         XCTAssertEqual(cache.data.count, 0)
         cache.store(packet)
         XCTAssertEqual(cache.data.count, 1)
         cache.store(packet)
-        
-        sleep(20)
         XCTAssertEqual(cache.data.count, 0)
+    }
+    
+    func testSendCachePreservation() {
+        let server = DummyServerConnection()
+        let cache = Cache(server: server, size: 10, rate: 2)
+        let packet = DataPacket(data: [String:String]())
+        
+        XCTAssertEqual(cache.data.count, 0)
+        cache.store(packet)
+        XCTAssertEqual(cache.data.count, 1)
+        cache.store(packet)
+        XCTAssertEqual(cache.data.count, 2)
+        cache.store(packet)
+        XCTAssertEqual(cache.data.count, 3)
     }
 }

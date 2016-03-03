@@ -15,10 +15,17 @@ internal class ServerConnection {
     let domainID: String
     var userID: String = ""
     
+    init() {
+        // This is for testing purposes
+        self.authHandler = {_ in}
+        self.domainID = ""
+        self.socket = SocketIOClient(socketURL: NSURL())
+    }
+    
     init(ip: String, domainID: String, callback: (BBResponse) -> ()) {
         self.domainID = domainID
         self.authHandler = callback
-        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [.Log(true)/*, .Secure(true)*/])
+        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [.Log(true), .Secure(true)])
         
         // TODO: Remove this test code.
         self.socket.on("connect") { data, ack in

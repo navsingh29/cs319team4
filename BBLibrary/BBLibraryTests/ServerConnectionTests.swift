@@ -12,6 +12,7 @@ import SocketIOClientSwift
 
 class ServerConnectionTests: XCTestCase {
     
+    //let serverIP = "https://184.66.140.77:8090"
     let serverIP = "http://localhost:8080"
     let domainID = "test"
    
@@ -33,9 +34,9 @@ class ServerConnectionTests: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(5) {
+        waitForExpectationsWithTimeout(20) {
             error in // TODO: Test error
-            XCTAssert(server.socket.status == .Connected);
+            XCTAssertEqual(server.socket.status, SocketIOClientStatus.Connected);
         }
     }
     
