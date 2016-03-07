@@ -21,7 +21,11 @@ public class UIAppSub: UIApplication {
     override public func sendEvent(event: UIEvent) {
         super.sendEvent(event)
 //        print("Event sent: \(event)")
-        print("Event",event.timestamp)
-        self.bblib.captureTouchEvent(event)
+        
+        if event.type == UIEventType.Touches {
+            print("Event",event.timestamp)
+            self.bblib.captureTouchEvent(event)
+        }
+        
     }
 }
