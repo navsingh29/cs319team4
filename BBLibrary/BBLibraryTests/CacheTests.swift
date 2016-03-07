@@ -11,10 +11,6 @@ import XCTest
 
 class CacheTests: XCTestCase {
     
-    //let serverIP = "http://184.66.140.77:8095"
-    let serverIP = "http://localhost:8080"
-    let domainID = "test"
-    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
