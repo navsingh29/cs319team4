@@ -12,7 +12,7 @@ import BBLibrary
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
 //    lazy var window: UIWindow? = {
 //        let window = AppUiWin()
