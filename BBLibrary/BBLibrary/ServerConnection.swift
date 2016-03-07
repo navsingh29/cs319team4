@@ -15,6 +15,13 @@ internal class ServerConnection {
     let domainID: String
     var userID: String = ""
     
+    init() {
+        // This is for testing purposes
+        self.authHandler = {_ in}
+        self.domainID = ""
+        self.socket = SocketIOClient(socketURL: NSURL())
+    }
+    
     init(ip: String, domainID: String, callback: (BBResponse) -> ()) {
         self.domainID = domainID
         self.authHandler = callback
@@ -37,14 +44,14 @@ internal class ServerConnection {
     func send(data: [DataPacket], resultHandler: (Bool) -> ()) {
         if socket.status != .Connected {
             // There is no authorized user yet to send this data for. Try again once the user has logged in.
-            print("|| No authorized user to send data for");
+            print("|| Server is not connected");
             resultHandler(false)
         } else if userID == "" {
             // The server is not connected.
-            print("|| Server is not connected");
+            print("|| No authorized user to send data for");
             resultHandler(false)
         } else {
-            socket.emitWithAck("data", data)(timeoutAfter: 0, callback: onAck(resultHandler))
+            socket.emitWithAck("data", prepareDictionary(data))(timeoutAfter: 0, callback: onAck(resultHandler));
             // TODO: Handle a timeout.
         }
     }

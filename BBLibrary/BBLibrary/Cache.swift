@@ -32,7 +32,7 @@ class Cache {
     }
     
     func store(packet: DataPacket) {
-        if (data.count > cacheLimit) {
+        if (data.count >= cacheLimit) {
             // Ignore the new data
             // TODO: Maybe we should replace old data instead.
             return
@@ -40,12 +40,14 @@ class Cache {
         
         // Put the packet into the cache.
         data.append(packet);
-        
+
         // Check if the buffer size has been reached.
         if (data.count >= bufferSize) {
+            print("|| Flushing cache buffer")
             // Attempt to send our data
             server.send(data) {
                 result in
+                print("|| Got send callback")
                 
                 if (result == true) {
                     // All the data has been sent, clear our cache.

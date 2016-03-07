@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410E971F1C88EB9500561A34 /* DummyServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410E971E1C88EB9500561A34 /* DummyServerConnection.swift */; };
+		4133356F1C88A822007DB7C2 /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4133356E1C88A822007DB7C2 /* CacheTests.swift */; };
 		41564CB41C72577B00DBB70E /* BBLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 41564CB31C72577B00DBB70E /* BBLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41564CBB1C72577B00DBB70E /* BBLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CB01C72577B00DBB70E /* BBLibrary.framework */; };
-		41564CC01C72577B00DBB70E /* BBLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CBF1C72577B00DBB70E /* BBLibraryTests.swift */; };
+		41564CC01C72577B00DBB70E /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CBF1C72577B00DBB70E /* ServerConnectionTests.swift */; };
 		41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CD41C72584100DBB70E /* LibraryAPI.swift */; };
 		419F39141C7264F400FF9DA8 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39131C7264F400FF9DA8 /* ServerConnection.swift */; };
 		419F39161C72687500FF9DA8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39151C72687500FF9DA8 /* Cache.swift */; };
@@ -69,11 +71,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410E971E1C88EB9500561A34 /* DummyServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyServerConnection.swift; sourceTree = "<group>"; };
+		4133356E1C88A822007DB7C2 /* CacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTests.swift; sourceTree = "<group>"; };
 		41564CB01C72577B00DBB70E /* BBLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BBLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41564CB31C72577B00DBB70E /* BBLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBLibrary.h; sourceTree = "<group>"; };
 		41564CB51C72577B00DBB70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41564CBA1C72577B00DBB70E /* BBLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		41564CBF1C72577B00DBB70E /* BBLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBLibraryTests.swift; sourceTree = "<group>"; };
+		41564CBF1C72577B00DBB70E /* ServerConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnectionTests.swift; sourceTree = "<group>"; };
 		41564CC11C72577B00DBB70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41564CD41C72584100DBB70E /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		419F39131C7264F400FF9DA8 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
@@ -133,8 +137,10 @@
 		41564CBE1C72577B00DBB70E /* BBLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
-				41564CBF1C72577B00DBB70E /* BBLibraryTests.swift */,
+				41564CBF1C72577B00DBB70E /* ServerConnectionTests.swift */,
 				41564CC11C72577B00DBB70E /* Info.plist */,
+				4133356E1C88A822007DB7C2 /* CacheTests.swift */,
+				410E971E1C88EB9500561A34 /* DummyServerConnection.swift */,
 			);
 			path = BBLibraryTests;
 			sourceTree = "<group>";
@@ -332,7 +338,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41564CC01C72577B00DBB70E /* BBLibraryTests.swift in Sources */,
+				4133356F1C88A822007DB7C2 /* CacheTests.swift in Sources */,
+				410E971F1C88EB9500561A34 /* DummyServerConnection.swift in Sources */,
+				41564CC01C72577B00DBB70E /* ServerConnectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
