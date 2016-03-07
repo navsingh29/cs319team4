@@ -382,6 +382,12 @@
                                     <segue destination="OWx-v2-MhE" kind="unwind" unwindAction="cancel:" id="LfK-r6-ML2"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username has already been taken" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZV-zH-c2N">
+                                <rect key="frame" x="170" y="227" width="260" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -391,10 +397,12 @@
                             <constraint firstItem="2IJ-pY-ZfZ" firstAttribute="top" secondItem="gt8-wH-dxw" secondAttribute="bottom" constant="2" id="EPA-kF-a4r"/>
                             <constraint firstItem="7H9-dZ-Zlt" firstAttribute="centerX" secondItem="KnT-PL-NyC" secondAttribute="centerX" id="Fdv-cd-NlP"/>
                             <constraint firstItem="adS-wA-0Kf" firstAttribute="top" secondItem="7H9-dZ-Zlt" secondAttribute="bottom" constant="36" id="J66-9d-e3I"/>
+                            <constraint firstItem="OZV-zH-c2N" firstAttribute="top" secondItem="7H9-dZ-Zlt" secondAttribute="bottom" constant="8" id="JFL-Ar-XcP"/>
                             <constraint firstItem="Znq-cP-PDD" firstAttribute="top" secondItem="jLa-PJ-reb" secondAttribute="bottom" constant="8" id="JVK-rq-BwA"/>
                             <constraint firstItem="dUU-am-39M" firstAttribute="centerX" secondItem="KnT-PL-NyC" secondAttribute="centerX" id="Kx4-yx-8i4"/>
                             <constraint firstItem="vyS-c2-y5U" firstAttribute="centerX" secondItem="KnT-PL-NyC" secondAttribute="centerX" id="W4n-Bo-Zi8"/>
                             <constraint firstItem="Znq-cP-PDD" firstAttribute="centerX" secondItem="KnT-PL-NyC" secondAttribute="centerX" id="ciU-xx-ueI"/>
+                            <constraint firstItem="OZV-zH-c2N" firstAttribute="centerX" secondItem="KnT-PL-NyC" secondAttribute="centerX" id="dCu-yd-IBi"/>
                             <constraint firstItem="gt8-wH-dxw" firstAttribute="top" secondItem="Znq-cP-PDD" secondAttribute="bottom" constant="42" id="dcg-a5-RWS"/>
                             <constraint firstItem="vyS-c2-y5U" firstAttribute="top" secondItem="2IJ-pY-ZfZ" secondAttribute="bottom" constant="22" id="mxc-AW-y5g"/>
                             <constraint firstItem="adS-wA-0Kf" firstAttribute="centerX" secondItem="KnT-PL-NyC" secondAttribute="centerX" id="r6t-VZ-s1s"/>
@@ -406,6 +414,7 @@
                     <connections>
                         <outlet property="password" destination="7H9-dZ-Zlt" id="OaW-my-WLL"/>
                         <outlet property="username" destination="2IJ-pY-ZfZ" id="ex2-gA-rmD"/>
+                        <outlet property="usernameTaken" destination="OZV-zH-c2N" id="RIA-om-mSb"/>
                         <segue destination="OWx-v2-MhE" kind="unwind" identifier="unwindAndRegister" unwindAction="register:" id="utY-3m-l6O"/>
                     </connections>
                 </viewController>

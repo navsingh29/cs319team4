@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Accounts</key>
+	<dict>
+		<key>Chequing</key>
+		<dict>
+			<key>Transactions</key>
+			<dict>
+				<key>Gas</key>
+				<real>-30.1</real>
+				<key>UBC Bookstore</key>
+				<real>-4999.05</real>
+				<key>Google Inc.</key>
+				<real>18500.5</real>
+				<key>Apple Store</key>
+				<integer>-850</integer>
+				<key>Freelance Work</key>
+				<integer>8500</integer>
+				<key>Microsoft Store</key>
+				<integer>-500</integer>
+				<key>Best Buy</key>
+				<real>-890.99</real>
+				<key>Landlord</key>
+				<integer>-800</integer>
+				<key>UBC Tuition</key>
+				<real>-17999.99</real>
+			</dict>
+		</dict>
+		<key>Savings</key>
+		<dict>
+			<key>Transactions</key>
+			<dict>
+				<key>Deposit</key>
+				<integer>2500</integer>
+				<key>Deposit 2</key>
+				<integer>1500</integer>
+			</dict>
+		</dict>
+		<key>Credit Card</key>
+		<dict>
+			<key>Transactions</key>
+			<dict>
+				<key>IKEA</key>
+				<integer>-500</integer>
+				<key>UBC Bookstore</key>
+				<real>-890.99</real>
+				<key>Payment - Thankyou</key>
+				<real>1390.99</real>
+				<key>Costco</key>
+				<real>-90.98999999999999</real>
+				<key>McDonald&apos;s</key>
+				<real>-20.5</real>
+				<key>Amazon</key>
+				<real>-50.5</real>
+			</dict>
+		</dict>
+		<key>Personal Loan</key>
+		<dict>
+			<key>Transactions</key>
+			<dict/>
+		</dict>
+	</dict>
+</dict>
+</plist>
