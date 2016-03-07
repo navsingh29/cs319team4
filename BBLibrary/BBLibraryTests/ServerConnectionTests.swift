@@ -12,7 +12,8 @@ import SocketIOClientSwift
 
 class ServerConnectionTests: XCTestCase {
     
-    let serverIP = "https://btdemo.plurilock.com"//:8095"
+    
+    //let serverIP = "ws://btdemo.plurilock.com:8095"
     //let serverIP = "http://localhost:8080"
     let domainID = "test"
    

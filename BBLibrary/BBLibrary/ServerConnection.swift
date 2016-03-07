@@ -25,7 +25,7 @@ internal class ServerConnection {
     init(ip: String, domainID: String, callback: (BBResponse) -> ()) {
         self.domainID = domainID
         self.authHandler = callback
-        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [.Log(true), .Secure(true)])
+        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [/*.Log(true), .Secure(true)*/])
         
         // TODO: Remove this test code.
         self.socket.on("connect") { data, ack in
