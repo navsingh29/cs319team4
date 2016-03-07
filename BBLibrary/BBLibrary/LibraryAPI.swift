@@ -28,11 +28,10 @@ public struct BBConfiguration {
 }
 
 public class BBLibrary {
-    public let version = "1.0"
     internal let config: BBConfiguration // Use of "let" (instead of "var") signals that this value cannot be changed.
     
-    private let server: ServerConnection
-    private let cache: Cache
+    let server: ServerConnection
+    let cache: Cache
     
     public init(args: BBConfiguration) {
         self.config = args

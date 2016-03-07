@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import SocketIOClientSwift
 @testable import BBLibrary
 
 class CacheTests: XCTestCase {
