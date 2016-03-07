@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public enum BBComponents {
     case KeyEvents, TouchEvents, PhoneData
@@ -30,6 +31,7 @@ public struct BBConfiguration {
 public class BBLibrary {
     internal let config: BBConfiguration // Use of "let" (instead of "var") signals that this value cannot be changed.
     
+    var touchCapturer: TouchCapturer?
     let server: ServerConnection
     let cache: Cache
     
@@ -42,11 +44,13 @@ public class BBLibrary {
         if config.enabledComponents.contains(.KeyEvents) {
             // TODO: Initialize the Key Events Capturer
             // Don't forget to pass the cache object to your new class.
+            
         }
         
         if config.enabledComponents.contains(.TouchEvents) {
             // TODO: Initialize the Touch Events Capturer
             // Don't forget to pass the cache object to your new class.
+            self.touchCapturer = TouchCapturer(cache: self.cache)
         }
         
         if config.enabledComponents.contains(.PhoneData) {
@@ -57,5 +61,11 @@ public class BBLibrary {
     
     public func setUserID(userID: String) {
         self.server.setUserID(userID)
+    }
+    
+    public func captureTouchEvent(event: UIEvent) {
+        if let touchCapt = touchCapturer {
+            touchCapt.processTouchEvent(event)
+        }
     }
 }
