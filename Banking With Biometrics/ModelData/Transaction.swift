@@ -12,6 +12,18 @@ import CoreData
 
 class Transaction: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    class func create(moc: NSManagedObjectContext, account: Account?, transactionName: String?, amount: NSDecimalNumber) -> Transaction? {
+        let newTransaction = NSEntityDescription.insertNewObjectForEntityForName("Transaction", inManagedObjectContext: moc) as! Transaction
+        newTransaction.name = transactionName
+        newTransaction.amount = amount
+        newTransaction.acount = account
+        do {
+            try moc.save()
+            return newTransaction
+        } catch let error as NSError {
+            print("Could not create new account \(error), \(error.userInfo)")
+        }
+        return nil
+    }
 
 }

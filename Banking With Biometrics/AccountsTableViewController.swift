@@ -11,7 +11,8 @@ import UIKit
 class AccountsTableViewController: UITableViewController {
     
     var user: User?
-    let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
+    
+    //let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
     
     @IBAction func addIconTapped(sender: UIBarButtonItem) {
         createAlertView()
@@ -29,7 +30,9 @@ class AccountsTableViewController: UITableViewController {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let moc = appDelegate.managedObjectContext
             Account.create(moc, user: self.user, accountName: textField.text)
-             print("TODO: add \(textField.text) to DB")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
@@ -47,13 +50,17 @@ class AccountsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts.count
+        return user!.accounts!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = "accounts"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
-        cell.textLabel!.text = accounts[indexPath.row]
+        let accounts = user!.accounts
+        let accountsArray = accounts!.allObjects as? [Account]
+        let account = accountsArray![indexPath.row]
+        cell.textLabel!.text = account.name
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -61,6 +68,15 @@ class AccountsTableViewController: UITableViewController {
         let vc = segue.destinationViewController
         let text = sender?.textLabel??.text
         vc.navigationItem.title = text!
+        
+        if segue.identifier == "accountsToTransactions" {
+            let transactionTVC = segue.destinationViewController as! TransactionsTableViewController
+            let accounts = user!.accounts
+            let accountsArray = accounts!.allObjects as? [Account]
+            let index = sender!.tag!
+            let account = accountsArray![index]
+            transactionTVC.account = account
+        }
     }
     
 }

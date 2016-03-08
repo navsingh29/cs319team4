@@ -16,7 +16,7 @@ class RegisterViewController : UIViewController {
     @IBOutlet weak var usernameTaken: UILabel!
 
     @IBAction func onRegisterTapped(sender: UIButton) {
-        
+
         let usernameString = username.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         let passwordString = password.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
@@ -33,16 +33,32 @@ class RegisterViewController : UIViewController {
             return // User already exists in db
         }
         
-        User.createInManagedObjectContext(managedContext, username: usernameString, password: passwordString)
+        let user = User.createInManagedObjectContext(managedContext, username: usernameString, password: passwordString)
+        loadData(managedContext, user: user)
         self.performSegueWithIdentifier("unwindAndRegister", sender: self)
     }
     
+    
+    func loadData(moc:NSManagedObjectContext, user: User?){
+        let path = NSBundle.mainBundle().pathForResource("MockData", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+        let accounts = dict!.valueForKey("Accounts") as? NSDictionary
+        for (accountName, accountDict) in accounts! {
+            let account = Account.create(moc, user: user, accountName: accountName as? String)
+            //print(accountName)
+            let transactions = accountDict.valueForKey("Transactions")
+            for(transaction, amount) in transactions as! NSDictionary {
+                //print((transaction as! String) + " " + (amount as! NSNumber).stringValue)
+                Transaction.create(moc, account: account, transactionName: transaction as? String, amount: NSDecimalNumber(string: (amount as? NSNumber)?.stringValue))
+            }
+        }
+    }
     
     /*
     func loadData() {
         // getting path to GameData.plist
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as NSArray
-        let documentsDirectory = paths[0] as String
+        let documentsDirectory = paths[0] as! String
         let path = documentsDirectory.stringByAppendingPathComponent("GameData.plist")
         let fileManager = NSFileManager.defaultManager()
         //check if file exists

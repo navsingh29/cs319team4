@@ -12,19 +12,21 @@ class TransactionsTableViewController: UITableViewController {
     
     @IBOutlet weak var balance: UILabel!
     
-    let transactions = [-30.10,-4999.05,18500.50,-850, 8500, -500, -890.99, -800, -17999.99]
-    let transactionNames = ["Gas", "UBC Bookstore", "Google Inc.", "Apple Store", "Freelance Work", "Microsoft Store", "Best Buy", "Landlord", "UBC Tuition"]
+    var account: Account?
+    //let transactions = [-30.10,-4999.05,18500.50,-850, 8500, -500, -890.99, -800, -17999.99]
+    //let transactionNames = ["Gas", "UBC Bookstore", "Google Inc.", "Apple Store", "Freelance Work", "Microsoft Store", "Best Buy", "Landlord", "UBC Tuition"]
     
     @IBAction func cancelUnwindToTransactionsTableViewController(segue:UIStoryboardSegue) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var sum = 0.0
-        for i in transactions {
-            sum += i
+        var sum = NSDecimalNumber(double: 0.0)
+        for t in account!.transactions! {
+            sum = (t as! Transaction).amount!.decimalNumberByAdding(sum)
         }
-        balance.text = "$"+String(format:"%.2f", sum)
+        //balance.text = "$"+String(format:"%.2f", sum)
+        balance.text = "$" + sum.stringValue
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -38,14 +40,15 @@ class TransactionsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count
+        return account!.transactions!.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let identifier = "cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
-        cell.textLabel?.text = transactionNames[indexPath.row]
-        cell.detailTextLabel?.text = String(transactions[indexPath.row])
+        let transactions = account?.transactions?.allObjects as! [Transaction]
+        cell.textLabel?.text = transactions[indexPath.row].name
+        cell.detailTextLabel?.text = transactions[indexPath.row].amount?.stringValue
         return cell
     }
     

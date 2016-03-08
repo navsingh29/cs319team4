@@ -49,7 +49,7 @@
 				<key>Payment - Thankyou</key>
 				<real>1390.99</real>
 				<key>Costco</key>
-				<real>-90.98999999999999</real>
+				<integer>-90</integer>
 				<key>McDonald&apos;s</key>
 				<real>-20.5</real>
 				<key>Amazon</key>
