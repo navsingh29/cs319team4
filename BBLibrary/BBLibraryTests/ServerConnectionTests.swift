@@ -11,10 +11,11 @@ import XCTest
 
 class ServerConnectionTests: XCTestCase {
     
-    let serverIP = "ws://echo.websocket.org"
-    //let serverIP = "ws://btdemo.plurilock.com:8095"
+    //let serverIP = "ws://echo.websocket.org"
+    let serverIP = "ws://btdemo.plurilock.com:8095"
     //let serverIP = "http://localhost:8080"
-    let domainID = "test"
+    let domainID = "unitTestDomain"
+    let userID = "unitTestUser"
    
     override func setUp() {
         super.setUp()
@@ -68,7 +69,7 @@ class ServerConnectionTests: XCTestCase {
         let dummyData = [DataPacket(data: [String:String]())]
         var outcome = false
         
-        server.setUserID("testuser")
+        server.setUserID(userID)
         
         server.setTestCallback() {
             type, data in

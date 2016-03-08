@@ -89,6 +89,7 @@ internal class ServerConnection : WebSocketDelegate {
                 let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonDict, options: NSJSONWritingOptions(rawValue: 0))
                 let jsonText = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
             
+                print("|| Sending data with url /api/users/ios_"+(jsonDict["userID"] as! String)+"_"+(jsonDict["domain"] as! String));
                 socket.writeString(jsonText as! String)
                 resultHandler(true)
                 // TODO: For the moment true is being sent immediately, but ideally this should only be sent when writeString succeeds.
