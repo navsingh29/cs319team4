@@ -10,4 +10,4 @@ import Foundation
 import UIKit
 import BBLibrary
 
-UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(UIAppSub), NSStringFromClass(AppDelegate))
+UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(BBApplication), NSStringFromClass(AppDelegate))

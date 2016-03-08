@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class UIAppSub: UIApplication {
-    internal let bblib:BBLibrary
+public class BBApplication: UIApplication {
+    internal let library: BBLibrary
 
     override init() {
         let configuration = BBConfiguration(serverIP:"http://localhost:8080", domainID:"test", cacheSize:1024, sendRate:10, enabledComponents: [BBComponents.TouchEvents], callback: {_ in})
-        self.bblib = BBLibrary(args: configuration)
+        self.library = BBLibrary(args: configuration)
         super.init()
         print("init")
     }
@@ -22,7 +22,7 @@ public class UIAppSub: UIApplication {
         super.sendEvent(event)
         if event.type == UIEventType.Touches {
             print("Event",event.timestamp)
-            self.bblib.captureTouchEvent(event)
+            self.library.captureTouchEvent(event)
         } else {
             print("notTouchEvent:", event)
         }

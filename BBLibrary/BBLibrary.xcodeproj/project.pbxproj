@@ -19,7 +19,7 @@
 		419F39161C72687500FF9DA8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39151C72687500FF9DA8 /* Cache.swift */; };
 		419F3B281C72722000FF9DA8 /* SocketIOClientSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 419F3B1D1C72721200FF9DA8 /* SocketIOClientSwift.framework */; };
 		780E57A61C8E0CEF00F8A015 /* TouchCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E57A41C8E0CEF00F8A015 /* TouchCapturer.swift */; };
-		780E57A71C8E0CEF00F8A015 /* UIAppSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E57A51C8E0CEF00F8A015 /* UIAppSub.swift */; };
+		780E57A71C8E0CEF00F8A015 /* BBApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E57A51C8E0CEF00F8A015 /* BBApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,7 +132,7 @@
 		419F39151C72687500FF9DA8 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		419F3B131C72721100FF9DA8 /* Socket.IO-Client-Swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Socket.IO-Client-Swift.xcodeproj"; path = "Socket-IO.0/Socket.IO-Client-Swift.xcodeproj"; sourceTree = "<group>"; };
 		780E57A41C8E0CEF00F8A015 /* TouchCapturer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchCapturer.swift; sourceTree = "<group>"; };
-		780E57A51C8E0CEF00F8A015 /* UIAppSub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAppSub.swift; sourceTree = "<group>"; };
+		780E57A51C8E0CEF00F8A015 /* BBApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				780E57A41C8E0CEF00F8A015 /* TouchCapturer.swift */,
-				780E57A51C8E0CEF00F8A015 /* UIAppSub.swift */,
+				780E57A51C8E0CEF00F8A015 /* BBApplication.swift */,
 				41564CD41C72584100DBB70E /* LibraryAPI.swift */,
 				419F39131C7264F400FF9DA8 /* ServerConnection.swift */,
 				419F39151C72687500FF9DA8 /* Cache.swift */,
@@ -443,7 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				419F39141C7264F400FF9DA8 /* ServerConnection.swift in Sources */,
-				780E57A71C8E0CEF00F8A015 /* UIAppSub.swift in Sources */,
+				780E57A71C8E0CEF00F8A015 /* BBApplication.swift in Sources */,
 				419F39161C72687500FF9DA8 /* Cache.swift in Sources */,
 				41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */,
 				780E57A61C8E0CEF00F8A015 /* TouchCapturer.swift in Sources */,
