@@ -13,6 +13,7 @@ class TransactionsTableViewController: UITableViewController {
     @IBOutlet weak var balance: UILabel!
     
     var account: Account?
+    var accounts: [Account]?
     //let transactions = [-30.10,-4999.05,18500.50,-850, 8500, -500, -890.99, -800, -17999.99]
     //let transactionNames = ["Gas", "UBC Bookstore", "Google Inc.", "Apple Store", "Freelance Work", "Microsoft Store", "Best Buy", "Landlord", "UBC Tuition"]
     
@@ -25,9 +26,11 @@ class TransactionsTableViewController: UITableViewController {
         for t in account!.transactions! {
             sum = (t as! Transaction).amount!.decimalNumberByAdding(sum)
         }
-        //balance.text = "$"+String(format:"%.2f", sum)
         balance.text = "$" + sum.stringValue
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,5 +55,12 @@ class TransactionsTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "transactionToTransfer" {
+            let vc = segue.destinationViewController as! TransferViewController
+            vc.account = account
+            vc.accounts = accounts
+        }
+    }
     
 }

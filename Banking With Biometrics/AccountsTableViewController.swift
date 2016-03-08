@@ -76,6 +76,7 @@ class AccountsTableViewController: UITableViewController {
             let index = sender!.tag!
             let account = accountsArray![index]
             transactionTVC.account = account
+            transactionTVC.accounts = accountsArray
         }
     }
     

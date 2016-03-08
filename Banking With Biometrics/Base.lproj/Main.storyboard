@@ -118,7 +118,7 @@
                                     <rect key="frame" x="272" y="0.0" width="57" height="30"/>
                                     <state key="normal" title="Transfer"/>
                                     <connections>
-                                        <segue destination="MMW-Ej-m9c" kind="presentation" id="Pr9-dM-SeG"/>
+                                        <segue destination="MMW-Ej-m9c" kind="presentation" identifier="transactionToTransfer" id="Pr9-dM-SeG"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N47-0r-fUL">
@@ -177,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="1641" y="834"/>
         </scene>
-        <!--View Controller-->
+        <!--Transfer View Controller-->
         <scene sceneID="awc-rn-Yir">
             <objects>
-                <viewController id="MMW-Ej-m9c" sceneMemberID="viewController">
+                <viewController id="MMW-Ej-m9c" customClass="TransferViewController" customModule="Banking_With_Biometrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O2q-C8-8rh"/>
                         <viewControllerLayoutGuide type="bottom" id="WGv-5R-1A7"/>
@@ -189,34 +189,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JId-5y-4vc">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JId-5y-4vc">
                                 <rect key="frame" x="0.0" y="53" width="600" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="dj9-M0-bMf"/>
+                                </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account to Transfer Money To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-7i-Ff0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account to Transfer Money To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-7i-Ff0">
                                 <rect key="frame" x="20" y="28" width="235" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wEE-LG-h16">
-                                <rect key="frame" x="252" y="285" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wEE-LG-h16">
+                                <rect key="frame" x="258" y="285" width="85" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aea-dp-SpA">
-                                <rect key="frame" x="379" y="370" width="57" height="30"/>
-                                <state key="normal" title="Transfer"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXF-Ad-Msk">
-                                <rect key="frame" x="167" y="370" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXF-Ad-Msk">
+                                <rect key="frame" x="276" y="410" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <segue destination="FaF-Jo-H2U" kind="unwind" unwindAction="cancelUnwindToTransactionsTableViewController:" id="tCf-N5-QEA"/>
+                                    <segue destination="FaF-Jo-H2U" kind="unwind" identifier="unwindToTransactions" unwindAction="cancelUnwindToTransactionsTableViewController:" id="tCf-N5-QEA"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error! Invalid Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzY-Gq-HWf">
+                                <rect key="frame" x="220" y="323" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aea-dp-SpA">
+                                <rect key="frame" x="272" y="365" width="57" height="30"/>
+                                <state key="normal" title="Transfer"/>
+                                <connections>
+                                    <action selector="transferTapped:" destination="MMW-Ej-m9c" eventType="touchUpInside" id="J8W-hA-BBN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zXF-Ad-Msk" firstAttribute="top" secondItem="aea-dp-SpA" secondAttribute="bottom" constant="15" id="5PY-2c-2gU"/>
+                            <constraint firstItem="JId-5y-4vc" firstAttribute="top" secondItem="5Ia-7i-Ff0" secondAttribute="bottom" constant="4" id="7O4-6I-nRU"/>
+                            <constraint firstItem="wEE-LG-h16" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="9w0-I5-RXn"/>
+                            <constraint firstItem="5Ia-7i-Ff0" firstAttribute="top" secondItem="O2q-C8-8rh" secondAttribute="bottom" constant="8" id="NJs-WO-XQi"/>
+                            <constraint firstItem="aea-dp-SpA" firstAttribute="top" secondItem="wEE-LG-h16" secondAttribute="bottom" constant="50" id="Nlb-RX-qZG"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5Ia-7i-Ff0" secondAttribute="leading" id="Q5u-ot-7GB"/>
+                            <constraint firstItem="aea-dp-SpA" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="ROQ-eq-9xW"/>
+                            <constraint firstItem="wEE-LG-h16" firstAttribute="top" secondItem="JId-5y-4vc" secondAttribute="bottom" constant="16" id="STr-6x-3xr"/>
+                            <constraint firstItem="JId-5y-4vc" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="m2Y-Tp-esp"/>
+                            <constraint firstItem="dzY-Gq-HWf" firstAttribute="top" secondItem="wEE-LG-h16" secondAttribute="bottom" constant="8" id="uv3-rg-pl9"/>
+                            <constraint firstItem="zXF-Ad-Msk" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="yP1-KA-b1g"/>
+                            <constraint firstItem="dzY-Gq-HWf" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="yqh-Hj-sWj"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amountTextField" destination="wEE-LG-h16" id="ris-at-aHY"/>
+                        <outlet property="invalidAmountLabel" destination="dzY-Gq-HWf" id="c81-5X-kvQ"/>
+                        <outlet property="pickerView" destination="JId-5y-4vc" id="zH0-Ua-dpm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBf-2k-hTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FaF-Jo-H2U" userLabel="Exit" sceneMemberID="exit"/>

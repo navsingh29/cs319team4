@@ -23,6 +23,7 @@
 		786893651C8E0B450022B246 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868935E1C8E0B450022B246 /* User+CoreDataProperties.swift */; };
 		788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */; };
 		78D9E7AE1C8F3BB10031FAA3 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */; };
+		78D9E7B01C8F46900031FAA3 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */; };
 		78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668C91C62FC1400C0CEFB /* AppDelegate.swift */; };
 		78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */; };
 		78E668D11C62FC1400C0CEFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E668CF1C62FC1400C0CEFB /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		7868935E1C8E0B450022B246 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "ModelData/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewController.swift; sourceTree = "<group>"; };
 		78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
+		78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		78E668C61C62FC1400C0CEFB /* Banking With Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banking With Biometrics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E668C91C62FC1400C0CEFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				780E57A21C8E0CBB00F8A015 /* AppUIWin.swift */,
 				780E579D1C8E0CA700F8A015 /* main.swift */,
 				78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */,
+				78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */,
 			);
 			path = "Banking With Biometrics";
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E668FA1C6302CF00C0CEFB /* LoginViewController.swift in Sources */,
+				78D9E7B01C8F46900031FAA3 /* TransferViewController.swift in Sources */,
 				78D9E7AE1C8F3BB10031FAA3 /* DepositViewController.swift in Sources */,
 				78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */,
 				788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */,
