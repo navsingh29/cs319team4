@@ -7,25 +7,34 @@
 //
 
 import Foundation
-import SocketIOClientSwift
+import Starscream
 
-internal class ServerConnection {
+internal class ServerConnection : WebSocketDelegate {
     let authHandler: (BBResponse) -> ()
-    let socket: SocketIOClient
+    //let socket: SocketIOClient
+    let socket: Starscream.WebSocket
     let domainID: String
     var userID: String = ""
+    
+    var testCallback: (String, AnyObject?) -> () = {_ in}
     
     init() {
         // This is for testing purposes
         self.authHandler = {_ in}
         self.domainID = ""
-        self.socket = SocketIOClient(socketURL: NSURL())
+        self.socket = WebSocket(url: NSURL())
     }
     
     init(ip: String, domainID: String, callback: (BBResponse) -> ()) {
         self.domainID = domainID
         self.authHandler = callback
-        self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [/*.Log(true), .Secure(true)*/])
+        
+        socket = WebSocket(url: NSURL(string: ip)!)
+        socket.delegate = self
+        print("|| Starting server connection")
+        socket.connect()
+        
+        /*self.socket = SocketIOClient(socketURL: NSURL(string: ip)!, options: [/*.Log(true), .Secure(true)*/])
         
         // TODO: Remove this test code.
         self.socket.on("connect") { data, ack in
@@ -38,26 +47,59 @@ internal class ServerConnection {
         // END test code
         
         print("|| Starting server connection")
-        self.socket.connect()
+        self.socket.connect()*/
+    }
+    
+    func websocketDidConnect(socket: WebSocket) {
+        print("|| Websocket is connected")
+        testCallback("connect", nil)
+    }
+    
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        print("|| Websocket is disconnected: \(error?.localizedDescription)")
+        testCallback("disconnect", nil)
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print("|| Got some text: \(text)")
+        testCallback("message", text)
+    }
+    
+    func websocketDidReceiveData(socket: WebSocket, data: NSData) {
+        print("|| Got some data: \(data.length)")
+        testCallback("data", data)
+    }
+    
+    func setTestCallback(callback: (String, AnyObject?) -> ()) {
+        self.testCallback = callback
     }
     
     func send(data: [DataPacket], resultHandler: (Bool) -> ()) {
-        if socket.status != .Connected {
+        if !socket.isConnected {
             // There is no authorized user yet to send this data for. Try again once the user has logged in.
-            print("|| Server is not connected");
+            print("|| Server is not connected")
             resultHandler(false)
         } else if userID == "" {
             // The server is not connected.
-            print("|| No authorized user to send data for");
+            print("|| No authorized user to send data for")
             resultHandler(false)
         } else {
-            socket.emitWithAck("data", prepareDictionary(data))(timeoutAfter: 0, callback: onAck(resultHandler));
-            // TODO: Handle a timeout.
+            do {
+                let jsonDict = prepareDictionary(data);
+                let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonDict, options: NSJSONWritingOptions(rawValue: 0))
+                let jsonText = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+            
+                socket.writeString(jsonText as! String)
+                resultHandler(true)
+                // TODO: For the moment true is being sent immediately, but ideally this should only be sent when writeString succeeds.
+            } catch {
+                resultHandler(false)
+            }
         }
     }
     
-    func getStatus() -> SocketIOClientStatus {
-        return socket.status
+    func isConnected() -> Bool {
+        return socket.isConnected
     }
     
     func setUserID(userID: String) {

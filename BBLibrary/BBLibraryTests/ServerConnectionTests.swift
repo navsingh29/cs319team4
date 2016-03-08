@@ -7,12 +7,11 @@
 //
 
 import XCTest
-import SocketIOClientSwift
 @testable import BBLibrary
 
 class ServerConnectionTests: XCTestCase {
     
-    
+    let serverIP = "ws://echo.websocket.org"
     //let serverIP = "ws://btdemo.plurilock.com:8095"
     //let serverIP = "http://localhost:8080"
     let domainID = "test"
@@ -31,13 +30,16 @@ class ServerConnectionTests: XCTestCase {
         let expectation = expectationWithDescription("Connect to server")
         let server = ServerConnection(ip: serverIP, domainID: domainID, callback: {_ in})
         
-        server.socket.on("connect") { data, ack in
-            expectation.fulfill()
+        server.setTestCallback() {
+            type, data in
+            if (type == "connect") {
+                expectation.fulfill()
+            }
         }
         
-        waitForExpectationsWithTimeout(20) {
-            error in // TODO: Test error
-            XCTAssertEqual(server.socket.status, SocketIOClientStatus.Connected);
+        self.waitForExpectationsWithTimeout(5) {
+            error in
+            XCTAssertEqual(server.socket.isConnected, true);
         }
     }
     
@@ -68,15 +70,18 @@ class ServerConnectionTests: XCTestCase {
         
         server.setUserID("testuser")
         
-        server.socket.on("connect") { data, ack in
-            server.send(dummyData) {
-                result in
-                outcome = result
-                expectation.fulfill()
+        server.setTestCallback() {
+            type, data in
+            if (type == "connect") {
+                server.send(dummyData) {
+                    result in
+                    outcome = result
+                    expectation.fulfill()
+                }
             }
         }
         
-        self.waitForExpectationsWithTimeout(20) {
+        self.waitForExpectationsWithTimeout(10) {
             error in // TODO: Test error
             XCTAssert(outcome, "Server failed to send data.")
         }
