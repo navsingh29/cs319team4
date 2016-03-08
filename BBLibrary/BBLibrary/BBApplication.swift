@@ -11,9 +11,15 @@ import UIKit
 public class BBApplication: UIApplication {
     internal let library: BBLibrary
 
+    //let serverIP = "ws://echo.websocket.org"
+    let serverIP = "ws://btdemo.plurilock.com:8095"
+    //let serverIP = "http://localhost:8080"
+
     override init() {
-        let configuration = BBConfiguration(serverIP:"http://localhost:8080", domainID:"test", cacheSize:1024, sendRate:10, enabledComponents: [BBComponents.TouchEvents], callback: {_ in})
+        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.TouchEvents], callback: {_ in})
         self.library = BBLibrary(args: configuration)
+        self.library.setUserID("testUserT4")
+        
         super.init()
         print("init")
     }
