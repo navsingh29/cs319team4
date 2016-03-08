@@ -10,7 +10,7 @@
         <!--Deposit-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Banking_With_Biometrics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="DepositViewController" customModule="Banking_With_Biometrics" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -19,45 +19,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cheque" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-Lq-fex">
-                                <rect key="frame" x="318" y="28" width="244" height="80"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cheque" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-Lq-fex">
+                                <rect key="frame" x="318" y="28" width="244" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jiU-Lq-fex" secondAttribute="height" multiplier="15:8" id="UAr-tv-3XI"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cheque" translatesAutoresizingMaskIntoConstraints="NO" id="Dgm-tt-xcN">
-                                <rect key="frame" x="45" y="28" width="244" height="80"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cheque" translatesAutoresizingMaskIntoConstraints="NO" id="Dgm-tt-xcN">
+                                <rect key="frame" x="45" y="28" width="244" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Dgm-tt-xcN" secondAttribute="height" multiplier="15:8" id="nor-Yb-w09"/>
                                 </constraints>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Znh-9E-9Qm">
-                                <rect key="frame" x="140" y="212" width="320" height="216"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znh-9E-9Qm">
+                                <rect key="frame" x="140" y="262" width="320" height="216"/>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fr-pj-EU7">
-                                <rect key="frame" x="200" y="174" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$ Amount" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Fr-pj-EU7">
+                                <rect key="frame" x="200" y="224" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="enP-ts-qfp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Front" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHh-cU-mP8">
-                                <rect key="frame" x="101" y="116" width="41" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHh-cU-mP8">
+                                <rect key="frame" x="147" y="166" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gR-AO-Onx">
-                                <rect key="frame" x="422" y="116" width="38" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gR-AO-Onx">
+                                <rect key="frame" x="421" y="166" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-8z-RZg">
-                                <rect key="frame" x="274" y="448" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-8z-RZg">
+                                <rect key="frame" x="274" y="498" width="53" height="30"/>
                                 <state key="normal" title="Deposit"/>
+                                <connections>
+                                    <action selector="depositTapped:" destination="9pv-A4-QxB" eventType="touchUpInside" id="TAo-hb-dwn"/>
+                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error! Invalid Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ru-P8-XaE">
+                                <rect key="frame" x="220" y="195" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -65,7 +74,9 @@
                             <constraint firstItem="ljl-8z-RZg" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="8xC-Hl-1Rs"/>
                             <constraint firstItem="Dgm-tt-xcN" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="9Nv-cS-8dh"/>
                             <constraint firstItem="Dgm-tt-xcN" firstAttribute="height" secondItem="jiU-Lq-fex" secondAttribute="height" id="C2r-n5-gHA"/>
+                            <constraint firstItem="8ru-P8-XaE" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="CJt-XB-0c5"/>
                             <constraint firstItem="Dgm-tt-xcN" firstAttribute="leadingMargin" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="33" id="HqD-KW-prz"/>
+                            <constraint firstItem="3Fr-pj-EU7" firstAttribute="top" secondItem="8ru-P8-XaE" secondAttribute="bottom" constant="8" id="I2J-7i-m55"/>
                             <constraint firstItem="2gR-AO-Onx" firstAttribute="centerX" secondItem="jiU-Lq-fex" secondAttribute="centerX" id="IOG-RN-Seb"/>
                             <constraint firstItem="2gR-AO-Onx" firstAttribute="top" secondItem="jiU-Lq-fex" secondAttribute="bottom" constant="8" id="Ig5-TV-11R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jiU-Lq-fex" secondAttribute="trailing" constant="18" id="T1v-Mf-piG"/>
@@ -81,6 +92,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Deposit" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="3Fr-pj-EU7" id="ZoK-iM-SdF"/>
+                        <outlet property="invalidAmountLabel" destination="8ru-P8-XaE" id="qI4-Ja-fnG"/>
+                        <outlet property="pickerView" destination="Znh-9E-9Qm" id="SBn-5V-q67"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>

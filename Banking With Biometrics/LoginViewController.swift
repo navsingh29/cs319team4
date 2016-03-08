@@ -48,6 +48,9 @@ class LoginViewController: UIViewController {
             let nav = tab.viewControllers![0] as! UINavigationController
             let accounts = nav.topViewController as! AccountsTableViewController
             accounts.user = user
+            
+            let deposit = tab.viewControllers![1] as! DepositViewController
+            deposit.user = user
         }
     }
     
