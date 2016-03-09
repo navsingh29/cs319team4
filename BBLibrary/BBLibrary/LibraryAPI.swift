@@ -18,6 +18,8 @@ public enum BBResponse {
     case Authorized, NotAuthorized
 }
 
+public let sendEventNotification = "SendEventNotification"
+
 public struct BBConfiguration {
     let serverIP: String
     let domainID: String
@@ -26,6 +28,14 @@ public struct BBConfiguration {
     let enabledComponents: [BBComponents]
     var callback: (BBResponse) -> ()
     //let touchListener // TODO: Implement some object that we can listen to for touches.
+    public init(serverIP: String, domainID: String, cacheSize: Int, sendRate: Int, enabledComponents: [BBComponents], callback: (BBResponse) -> ()) {
+        self.serverIP = serverIP
+        self.domainID = domainID
+        self.cacheSize = cacheSize
+        self.sendRate = sendRate
+        self.enabledComponents = enabledComponents
+        self.callback = callback
+    }
 }
 
 public class BBLibrary {
