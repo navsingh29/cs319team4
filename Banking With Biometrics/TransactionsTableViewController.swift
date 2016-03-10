@@ -22,15 +22,15 @@ class TransactionsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
         var sum = NSDecimalNumber(double: 0.0)
         for t in account!.transactions! {
             sum = (t as! Transaction).amount!.decimalNumberByAdding(sum)
         }
         balance.text = "$" + sum.stringValue
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

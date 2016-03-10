@@ -32,7 +32,7 @@ class TransferViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let toAccount = accounts![row]
         Transaction.create(moc, account: toAccount, transactionName: "Transfer From " + account!.name!, amount: amount)
         
-        Transaction.create(moc, account: account, transactionName: "Transfer To " + toAccount.name!, amount: amount)
+        Transaction.create(moc, account: account, transactionName: "Transfer To " + toAccount.name!, amount: amount.decimalNumberByMultiplyingBy(NSDecimalNumber(string: "-1")))
         
         performSegueWithIdentifier("unwindToTransactions", sender: self)
     }
