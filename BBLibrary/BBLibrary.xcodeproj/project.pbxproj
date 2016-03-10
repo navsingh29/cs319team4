@@ -199,6 +199,7 @@
 				41564CAC1C72577B00DBB70E /* Frameworks */,
 				41564CAD1C72577B00DBB70E /* Headers */,
 				41564CAE1C72577B00DBB70E /* Resources */,
+				416581171C9223F700BBB73A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -331,6 +332,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		416581171C9223F700BBB73A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $BUILT_PRODUCTS_DIR\n\nmkdir $PROJECT_NAME.framework/Frameworks &>/dev/null\n\nfor framework in *.framework; do\nif [ $framework != $PROJECT_NAME.framework ]; then\ncp -r $framework $PROJECT_NAME.framework/Frameworks/ &>/dev/null\nfi\ndone";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41564CAB1C72577B00DBB70E /* Sources */ = {
