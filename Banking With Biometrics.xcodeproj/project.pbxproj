@@ -24,6 +24,8 @@
 		788194B11C685C3C00D3821D /* TransactionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */; };
 		78D9E7AE1C8F3BB10031FAA3 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */; };
 		78D9E7B01C8F46900031FAA3 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */; };
+		78E2A5D01C921DE4002325E4 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E2A5CF1C921DE4002325E4 /* LocationsViewController.swift */; };
+		78E2A5D21C921EA3002325E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E2A5D11C921EA3002325E4 /* MapKit.framework */; };
 		78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668C91C62FC1400C0CEFB /* AppDelegate.swift */; };
 		78E668CE1C62FC1400C0CEFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */; };
 		78E668D11C62FC1400C0CEFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E668CF1C62FC1400C0CEFB /* Main.storyboard */; };
@@ -104,6 +106,8 @@
 		788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewController.swift; sourceTree = "<group>"; };
 		78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
 		78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		78E2A5CF1C921DE4002325E4 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		78E2A5D11C921EA3002325E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		78E668C61C62FC1400C0CEFB /* Banking With Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banking With Biometrics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E668C91C62FC1400C0CEFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E668CD1C62FC1400C0CEFB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E2A5D21C921EA3002325E4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +176,7 @@
 		78E668BD1C62FC1400C0CEFB = {
 			isa = PBXGroup;
 			children = (
+				78E2A5D11C921EA3002325E4 /* MapKit.framework */,
 				41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */,
 				78E668C81C62FC1400C0CEFB /* Banking With Biometrics */,
 				78E668DF1C62FC1400C0CEFB /* Banking With BiometricsTests */,
@@ -209,6 +215,7 @@
 				780E579D1C8E0CA700F8A015 /* main.swift */,
 				78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */,
 				78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */,
+				78E2A5CF1C921DE4002325E4 /* LocationsViewController.swift */,
 			);
 			path = "Banking With Biometrics";
 			sourceTree = "<group>";
@@ -301,6 +308,11 @@
 				TargetAttributes = {
 					78E668C51C62FC1400C0CEFB = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					78E668DB1C62FC1400C0CEFB = {
 						CreatedOnToolsVersion = 7.2;
@@ -400,6 +412,7 @@
 				78E668CA1C62FC1400C0CEFB /* AppDelegate.swift in Sources */,
 				786893531C8E03780022B246 /* RegisterViewController.swift in Sources */,
 				782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */,
+				78E2A5D01C921DE4002325E4 /* LocationsViewController.swift in Sources */,
 				780E57A31C8E0CBB00F8A015 /* AppUIWin.swift in Sources */,
 				780E579E1C8E0CA700F8A015 /* main.swift in Sources */,
 				780E57A11C8E0CB400F8A015 /* UIWindowSub.swift in Sources */,
