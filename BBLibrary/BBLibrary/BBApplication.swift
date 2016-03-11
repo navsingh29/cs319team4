@@ -16,7 +16,7 @@ public class BBApplication: UIApplication {
     //let serverIP = "http://localhost:8080"
     
     override init() {
-        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.TouchEvents], callback: {_ in})
+        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.TouchEvents,.PhoneData], callback: {_ in})
         self.library = BBLibrary(args: configuration)
         self.library.setUserID("testUserT4")
         
