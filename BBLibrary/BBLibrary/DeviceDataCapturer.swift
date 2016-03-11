@@ -2,7 +2,7 @@
 //  DeviceDataCapturer.swift
 //  BBLibrary
 //
-//  Created by Anthony on 2016-03-08.
+//  Created by Anthony on 2016-03-11.
 //
 //
 
