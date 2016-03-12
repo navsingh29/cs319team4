@@ -6,6 +6,14 @@
 	<array>
 		<dict>
 			<key>Name</key>
+			<string>US Branch (Renton, WA)</string>
+			<key>Lat</key>
+			<real>47.483738</real>
+			<key>Long</key>
+			<real>-122.213287</real>
+		</dict>
+		<dict>
+			<key>Name</key>
 			<string>Cache Bank HQ</string>
 			<key>Lat</key>
 			<real>49.282013</real>
@@ -22,7 +30,7 @@
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Cache Bank ATM</string>
+			<string>Surrey Branch</string>
 			<key>Lat</key>
 			<real>49.1833</real>
 			<key>Long</key>

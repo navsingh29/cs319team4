@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LocationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LocationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -18,14 +18,9 @@ class LocationsViewController: UIViewController, UITableViewDataSource, UITableV
     
     let regionRadius: CLLocationDistance = 1000
     
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mapView.delegate = self
         initLocationData()
         var initialLocation = CLLocation(latitude: 49.1833, longitude: -122.8500)
         if clLocations.count > 0 {
@@ -59,11 +54,32 @@ class LocationsViewController: UIViewController, UITableViewDataSource, UITableV
         let locations = dict!.valueForKey("Locations") as! NSArray
         for location in locations {
             let locationDict = location as! NSDictionary
-            locationNames.append(locationDict.valueForKey("Name") as! String)
+            let locationName = locationDict.valueForKey("Name") as! String
+            locationNames.append(locationName)
             let lat = locationDict.valueForKey("Lat") as! NSNumber
             let long = locationDict.valueForKey("Long") as! NSNumber
             clLocations.append(CLLocation(latitude: lat.doubleValue, longitude: long.doubleValue))
+            addPinToMap(locationName, latitude: lat.doubleValue, longitude: long.doubleValue)
         }
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        return nil
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+            regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func addPinToMap(name: String, latitude: Double, longitude: Double) {
+        let location = CLLocationCoordinate2DMake(latitude, longitude)
+        // Drop a pin
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = location
+        dropPin.title = name
+        mapView.addAnnotation(dropPin)
     }
     
 }
