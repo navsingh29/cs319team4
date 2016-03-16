@@ -42,6 +42,7 @@ public class BBLibrary {
     internal let config: BBConfiguration // Use of "let" (instead of "var") signals that this value cannot be changed.
     
     var touchCapturer: TouchCapturer?
+    var keyCapturer: KeyCapturer?
     var deviceDataCapturer: DeviceDataCapturer?
     let server: ServerConnection
     let cache: Cache
@@ -55,7 +56,7 @@ public class BBLibrary {
         if config.enabledComponents.contains(.KeyEvents) {
             // TODO: Initialize the Key Events Capturer
             // Don't forget to pass the cache object to your new class.
-            
+            self.keyCapturer = KeyCapturer(cache: self.cache)
         }
         
         if config.enabledComponents.contains(.TouchEvents) {
@@ -83,6 +84,12 @@ public class BBLibrary {
     public func captureTouchEvent(event: UIEvent) {
         if let touchCapt = touchCapturer {
             touchCapt.processTouchEvent(event)
+        }
+    }
+    
+    public func captureKeyEvent(notification: NSNotification) {
+        if let keyCapt = keyCapturer {
+            keyCapt.processKeyEvent(notification)
         }
     }
 }

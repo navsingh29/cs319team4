@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let nc = NSNotificationCenter.defaultCenter()
     
     override init() {
-        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.TouchEvents], callback: {_ in})
+        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.TouchEvents, .KeyEvents], callback: {_ in})
         self.library = BBLibrary(args: configuration)
         self.library.setUserID("testUserT4")
         super.init()
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func readKey(notification: NSNotification) {
-         print("key",(notification.object as! UITextField).text)
+        self.library.captureKeyEvent(notification)
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
