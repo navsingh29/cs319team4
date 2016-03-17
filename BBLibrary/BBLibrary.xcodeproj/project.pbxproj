@@ -14,7 +14,7 @@
 		41564CB41C72577B00DBB70E /* BBLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 41564CB31C72577B00DBB70E /* BBLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41564CBB1C72577B00DBB70E /* BBLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CB01C72577B00DBB70E /* BBLibrary.framework */; };
 		41564CC01C72577B00DBB70E /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CBF1C72577B00DBB70E /* ServerConnectionTests.swift */; };
-		41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CD41C72584100DBB70E /* LibraryAPI.swift */; };
+		41564CD51C72584100DBB70E /* BBLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41564CD41C72584100DBB70E /* BBLibrary.swift */; };
 		419F39141C7264F400FF9DA8 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39131C7264F400FF9DA8 /* ServerConnection.swift */; };
 		419F39161C72687500FF9DA8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419F39151C72687500FF9DA8 /* Cache.swift */; };
 		69ECFD961C996E1C0016C042 /* KeyCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECFD951C996E1C0016C042 /* KeyCapturer.swift */; };
@@ -86,7 +86,7 @@
 		41564CBA1C72577B00DBB70E /* BBLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BBLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41564CBF1C72577B00DBB70E /* ServerConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnectionTests.swift; sourceTree = "<group>"; };
 		41564CC11C72577B00DBB70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41564CD41C72584100DBB70E /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
+		41564CD41C72584100DBB70E /* BBLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBLibrary.swift; sourceTree = "<group>"; };
 		419F39131C7264F400FF9DA8 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		419F39151C72687500FF9DA8 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		69ECFD951C996E1C0016C042 /* KeyCapturer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCapturer.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				78A7C1801C93F5CD00AD50A2 /* DeviceDataCapturer.swift */,
 				780E57A41C8E0CEF00F8A015 /* TouchCapturer.swift */,
 				780E57A51C8E0CEF00F8A015 /* BBApplication.swift */,
-				41564CD41C72584100DBB70E /* LibraryAPI.swift */,
+				41564CD41C72584100DBB70E /* BBLibrary.swift */,
 				419F39131C7264F400FF9DA8 /* ServerConnection.swift */,
 				419F39151C72687500FF9DA8 /* Cache.swift */,
 				69ECFD951C996E1C0016C042 /* KeyCapturer.swift */,
@@ -365,7 +365,7 @@
 				69ECFD961C996E1C0016C042 /* KeyCapturer.swift in Sources */,
 				419F39161C72687500FF9DA8 /* Cache.swift in Sources */,
 				78A7C1811C93F5CD00AD50A2 /* DeviceDataCapturer.swift in Sources */,
-				41564CD51C72584100DBB70E /* LibraryAPI.swift in Sources */,
+				41564CD51C72584100DBB70E /* BBLibrary.swift in Sources */,
 				780E57A61C8E0CEF00F8A015 /* TouchCapturer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

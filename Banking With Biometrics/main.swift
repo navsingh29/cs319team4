@@ -10,4 +10,19 @@ import Foundation
 import UIKit
 import BBLibrary
 
+//let serverIP = "ws://echo.websocket.org"
+let serverIP = "ws://btdemo.plurilock.com:8095"
+//let serverIP = "http://localhost:8080"
+
+func authCallback(response: BBResponse) {
+    if response == .NotAuthorized {
+        // TODO: Log the user out.
+        print("User is not authorized")
+    }
+}
+
+let config = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.KeyEvents, .TouchEvents,.PhoneData], callback: authCallback)
+
+BBLibrary.configure(config)
+
 UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(BBApplication), NSStringFromClass(AppDelegate))
