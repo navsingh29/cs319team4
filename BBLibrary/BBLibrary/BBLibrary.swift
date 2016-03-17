@@ -15,7 +15,7 @@ public enum BBComponents {
 }
 
 public enum BBResponse {
-    case Authorized, NotAuthorized
+    case Authorized, NotAuthorized, Unrecognized
 }
 
 public let sendEventNotification = "SendEventNotification"
@@ -50,7 +50,8 @@ public class BBLibrary {
         if let lib = BBLibrary.library {
             return lib
         } else if let config = BBLibrary.config {
-            return BBLibrary(args: config)
+            BBLibrary.library = BBLibrary(args: config)
+            return BBLibrary.library
         } else {
             print("BBConfiguration has not been defined.")
         }
