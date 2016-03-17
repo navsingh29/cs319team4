@@ -83,11 +83,7 @@ public class BBLibrary {
         
         if config.enabledComponents.contains(.PhoneData) {
             self.deviceDataCapturer = DeviceDataCapturer(cache: self.cache)
-            self.deviceDataCapturer?.captureIOSVersion()
-            self.deviceDataCapturer?.captureModel()
-            self.deviceDataCapturer?.captureDeviceScreenSize()
-            self.deviceDataCapturer?.captureLocalTimeZone()
-            self.deviceDataCapturer?.captureLanguageSetting()
+            self.deviceDataCapturer?.capturePhoneData()
         }
     }
     
