@@ -30,6 +30,7 @@ class KeyCapturer {
         }
         else {
             print("Key Pressed: \(str.last!)")
+            // should not use ! if it cannot interpret, it will crash.
             prevTextSize = textSize
         }
         //print("Monograph: \(getMonograph(notification))")
