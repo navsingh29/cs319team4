@@ -11,21 +11,16 @@ import UIKit
 public class BBApplication: UIApplication {
     internal var library: BBLibrary
     
-    //let serverIP = "ws://echo.websocket.org"
-    let serverIP = "ws://btdemo.plurilock.com:8095"
-    //let serverIP = "http://localhost:8080"
     let nc = NSNotificationCenter.defaultCenter()
     
     override init() {
-        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.KeyEvents, .TouchEvents,.PhoneData], callback: {_ in})
-        self.library = BBLibrary(args: configuration)
-        self.library.setUserID("testUserT4")
-//        self.delegate?.window = AppUiWin()
+        self.library = BBLibrary.get()!
+        //self.delegate?.window = AppUiWin()
         super.init()
         nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
         print("init")
     }
-    
+
     func tap() {
         print("tap")
     }
@@ -36,11 +31,11 @@ public class BBApplication: UIApplication {
         tapGesture.numberOfTapsRequired = 1
         self.windows[0].rootViewController?.view.addGestureRecognizer(tapGesture)
         
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.windows[0].rootViewController?.view.addGestureRecognizer(swipeRight)
         
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.windows[0].rootViewController?.view.addGestureRecognizer(swipeDown)
     }
