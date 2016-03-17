@@ -11,7 +11,6 @@ import Starscream
 
 internal class ServerConnection : WebSocketDelegate {
     let authHandler: (BBResponse) -> ()
-    //let socket: SocketIOClient
     let socket: Starscream.WebSocket
     let domainID: String
     var userID: String = ""
@@ -132,8 +131,15 @@ internal class ServerConnection : WebSocketDelegate {
             
             resultHandler(true)
             
-            // TODO: Figure out the appropriate BBResponse.
-            self.authHandler(BBResponse.Authorized)
+            let responseArr = (response[0] as! String).componentsSeparatedByString("$")
+            
+            if responseArr[1] == "Ack" {
+                self.authHandler(BBResponse.Authorized)
+            } else if responseArr[1] == "lock" {
+                self.authHandler(BBResponse.NotAuthorized)
+            } else {
+                self.authHandler(BBResponse.Unrecognized)
+            }
         }
     }
 }

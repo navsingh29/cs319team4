@@ -11,18 +11,13 @@ import UIKit
 public class BBApplication: UIApplication {
     internal var library: BBLibrary
     
-    //let serverIP = "ws://echo.websocket.org"
-    let serverIP = "ws://btdemo.plurilock.com:8095"
-    //let serverIP = "http://localhost:8080"
     let nc = NSNotificationCenter.defaultCenter()
     let panRec = UIPanGestureRecognizer()
     let pinchRec = UIPinchGestureRecognizer()
     
     override init() {
-        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.KeyEvents, .TouchEvents,.PhoneData], callback: {_ in})
-        self.library = BBLibrary(args: configuration)
-        self.library.setUserID("testUserT4")
-//        self.delegate?.window = AppUiWin()
+        self.library = BBLibrary.get()!
+        //self.delegate?.window = AppUiWin()
         super.init()
         nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
         
@@ -36,7 +31,7 @@ public class BBApplication: UIApplication {
         (notification.object as! UIWindow).rootViewController?.view.addGestureRecognizer(panRec)
         print("Window is visible")
     }
-    
+
     func tap() {
         print("tap")
     }

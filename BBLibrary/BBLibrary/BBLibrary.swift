@@ -15,7 +15,7 @@ public enum BBComponents {
 }
 
 public enum BBResponse {
-    case Authorized, NotAuthorized
+    case Authorized, NotAuthorized, Unrecognized
 }
 
 public let sendEventNotification = "SendEventNotification"
@@ -39,6 +39,26 @@ public struct BBConfiguration {
 }
 
 public class BBLibrary {
+    static var library : BBLibrary?
+    static var config : BBConfiguration?
+    
+    public class func configure(config: BBConfiguration) {
+        BBLibrary.config = config
+    }
+    
+    public class func get() -> BBLibrary? {
+        if let lib = BBLibrary.library {
+            return lib
+        } else if let config = BBLibrary.config {
+            BBLibrary.library = BBLibrary(args: config)
+            return BBLibrary.library
+        } else {
+            print("BBConfiguration has not been defined.")
+        }
+
+        return nil
+    }
+    
     internal let config: BBConfiguration // Use of "let" (instead of "var") signals that this value cannot be changed.
     
     var touchCapturer: TouchCapturer?
@@ -54,26 +74,16 @@ public class BBLibrary {
         self.cache = Cache(server: server, size: args.cacheSize, rate: args.sendRate)
         
         if config.enabledComponents.contains(.KeyEvents) {
-            // TODO: Initialize the Key Events Capturer
-            // Don't forget to pass the cache object to your new class.
             self.keyCapturer = KeyCapturer(cache: self.cache)
         }
         
         if config.enabledComponents.contains(.TouchEvents) {
-            // TODO: Initialize the Touch Events Capturer
-            // Don't forget to pass the cache object to your new class.
             self.touchCapturer = TouchCapturer(cache: self.cache)
         }
         
         if config.enabledComponents.contains(.PhoneData) {
-            // TODO: Initialize the Phone Data Capturer
-            // Don't forget to pass the cache object to your new class.
             self.deviceDataCapturer = DeviceDataCapturer(cache: self.cache)
-            self.deviceDataCapturer?.captureIOSVersion()
-            self.deviceDataCapturer?.captureModel()
-            self.deviceDataCapturer?.captureDeviceScreenSize()
-            self.deviceDataCapturer?.captureLocalTimeZone()
-            self.deviceDataCapturer?.captureLanguageSetting()
+            self.deviceDataCapturer?.capturePhoneData()
         }
     }
     
