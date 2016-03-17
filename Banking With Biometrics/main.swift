@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import BBLibrary
 
-//let serverIP = "ws://echo.websocket.org"
-let serverIP = "ws://btdemo.plurilock.com:8095"
-//let serverIP = "http://localhost:8080"
+let serverIP = "ws://btdemo.plurilock.com:8095" //"http://localhost:8080" //"ws://echo.websocket.org"
 
 func authCallback(response: BBResponse) {
     if response == .NotAuthorized {
+        //let delegate = BBApplication.sharedApplication().delegate?
         // TODO: Log the user out.
+        
         print("User is not authorized")
     }
 }
