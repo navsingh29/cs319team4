@@ -23,12 +23,12 @@ class DeviceDataCapturer{
         let screenHeight = screenSize.height
         let ltz =  NSTimeZone.localTimeZone().name
         let prefferedLanguage = NSLocale.preferredLanguages()[0]
-        let phoneDataPacket = DataPacket.init(data: ["IOS: ":"\(ios)",
-                                                     "Model: ":"\(device)",
-                                                     "ScreenWidth in points: ":"\(screenWidth)",
-                                                     "ScreenHeight in points: ":"\(screenHeight)",
-                                                     "TimeZone: ":ltz,
-                                                     "Preffered Language: ":"\(prefferedLanguage)"])
+        let phoneDataPacket = DataPacket.init(data: ["IOS": "\(ios)",
+                                                     "Model": "\(device)",
+                                                     "ScreenWidth in points": "\(screenWidth)",
+                                                     "ScreenHeight in points": "\(screenHeight)",
+                                                     "TimeZone": ltz,
+                                                     "Preffered Language": "\(prefferedLanguage)"])
         cache.store(phoneDataPacket)
         print("IOS: \(ios)")
         print("Model: \(device)")
