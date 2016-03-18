@@ -20,7 +20,7 @@ public class BBApplication: UIApplication {
         //self.delegate?.window = AppUiWin()
         super.init()
         nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
-        
+        nc.addObserver(self, selector: "readKey:", name: "UITextFieldTextDidChangeNotification", object: nil)
         nc.addObserver(self, selector: "winVisible:", name: "UIWindowDidBecomeVisibleNotification", object: nil)
         print("init")
         
@@ -65,7 +65,6 @@ public class BBApplication: UIApplication {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             
-            
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
                 print("Swiped right")
@@ -81,17 +80,21 @@ public class BBApplication: UIApplication {
         }
     }
     
+    func readKey(notification: NSNotification) {
+        self.library.captureKeyEvent(notification)
+    }
+    
     override public func sendEvent(event: UIEvent) {
 //        print(self.applicationState.rawValue)
         super.sendEvent(event)
 //        print(self.windows[0].rootViewController?.view, "UIWindow view")
-        print(self.windows.count, "num of windows")
-        for var i = 0; i < self.windows.count; ++i {
-                print(self.windows[i])
-        }
+//        print(self.windows.count, "num of windows")
+//        for var i = 0; i < self.windows.count; ++i {
+//                print(self.windows[i])
+//        }
         
         if event.type == UIEventType.Touches {
-            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
+//            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
             self.library.captureTouchEvent(event)
         } else {
             print("notTouchEvent:", event)
