@@ -50,8 +50,8 @@ public class BBApplication: UIApplication {
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.windows[0].rootViewController?.view.addGestureRecognizer(swipeDown)
         
-//        panRec.addTarget(self, action: "draggedView:")
-//        self.windows[0].rootViewController?.view.addGestureRecognizer(panRec)
+        panRec.addTarget(self, action: "draggedView:")
+        self.windows[0].rootViewController?.view.addGestureRecognizer(panRec)
         
         pinchRec.addTarget(self, action: "pinchedView:")
         self.windows[0].rootViewController?.view.addGestureRecognizer(pinchRec)
@@ -92,7 +92,8 @@ public class BBApplication: UIApplication {
 //        for var i = 0; i < self.windows.count; ++i {
 //                print(self.windows[i])
 //        }
-        
+        print("Gesture")
+        print(event.touchesForGestureRecognizer(panRec))
         if event.type == UIEventType.Touches {
 //            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
             self.library.captureTouchEvent(event)

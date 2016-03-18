@@ -12,15 +12,33 @@ import UIKit
 class TouchCapturer {
     let cache:Cache
     
-    
     init (cache: Cache) {
         self.cache = cache
     }
     
     func processTouchEvent (event: UIEvent) {
-        // not sure if this the right way to declare @Devindra
+        var touches:Set<UITouch>
+
         var dataPacket: DataPacket
-        print("|| TouchCapturer Event",event.description)
+        print("|| TouchCapturer Event\n")
+        touches = event.allTouches()!
+        print(touches)
+        for touch in touches {
+            print("phase", (touch.phase.rawValue))
+            switch touch.phase {
+            case .Began:
+                print("Began")
+            case .Moved:
+                print("Moved")
+            case .Stationary:
+                print("Stationary")
+            case .Ended:
+                print("Ended")
+            case .Cancelled:
+                print("Cancelled")
+            }
+            
+        }
         dataPacket  = DataPacket(data: ["description":event.description],datetime: NSDate())
         cache.store(dataPacket)
     }
