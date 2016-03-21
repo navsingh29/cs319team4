@@ -36,6 +36,17 @@ class DeviceDataCapturer{
         print("ScreenHeight in points: \(screenHeight)")
         print("TimeZone: \(ltz)")
         print("Preffered Language: \(prefferedLanguage)")
+//        These are needed:
+//        Language
+//        Hardware model
+//        Manufacturer
+//        SDK version
+//        Screen size
+//        Time zone
+//        Date/time
+//        Country code
+//        Number of CPU cores
+//        Location: latitude, longitude
     }
     
 }

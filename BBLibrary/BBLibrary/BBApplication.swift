@@ -92,8 +92,9 @@ public class BBApplication: UIApplication {
 //        for var i = 0; i < self.windows.count; ++i {
 //                print(self.windows[i])
 //        }
-        print("Gesture")
-        print(event.touchesForGestureRecognizer(panRec))
+//        print("Gesture")
+//        print(event.touchesForGestureRecognizer(panRec))
+        print(event)
         if event.type == UIEventType.Touches {
 //            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
             self.library.captureTouchEvent(event)

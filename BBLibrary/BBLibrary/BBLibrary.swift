@@ -18,6 +18,16 @@ public enum BBResponse {
     case Authorized, NotAuthorized, Unrecognized
 }
 
+internal enum BBEvent: CustomStringConvertible {
+    case Mono, Di
+    var description : String {
+        switch self {
+            case .Mono: return "MonoTouch";
+            case .Di: return "DiTouch";
+        }
+    }
+}
+
 public let sendEventNotification = "SendEventNotification"
 
 public struct BBConfiguration {
