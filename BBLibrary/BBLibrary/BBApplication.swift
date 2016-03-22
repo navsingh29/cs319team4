@@ -60,7 +60,9 @@ public class BBApplication: UIApplication {
     func draggedView(gesture: UIPanGestureRecognizer) {
         print("dragged")
     }
-    
+    func pinchedView(gesture: UIPinchGestureRecognizer) {
+        print("pinched")
+    }
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {

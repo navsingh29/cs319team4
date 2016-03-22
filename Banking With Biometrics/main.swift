@@ -21,7 +21,7 @@ func authCallback(response: BBResponse) {
     }
 }
 
-let config = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.KeyEvents, .TouchEvents,.PhoneData], callback: authCallback)
+let config = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: BBComponents.allValues, digraphTimeout: 300, callback: authCallback)
 
 BBLibrary.configure(config)
 

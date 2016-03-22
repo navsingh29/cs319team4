@@ -91,7 +91,6 @@ class TouchCapturer {
                 
             }
         }
-//        touches = event.allTouches()!
     }
     
     private func getDeviceOrientation(device: UIDevice) -> String {
