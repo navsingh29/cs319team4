@@ -27,7 +27,7 @@ class AccountsTableViewController: UITableViewController {
     }
     
     func createLogoutAlert() {
-        let alert: UIAlertController = UIAlertController(title: "You have been logged out", message: nil, preferredStyle: .Alert)
+        let alert: UIAlertController = UIAlertController(title: "You have successfully logged out", message: nil, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)

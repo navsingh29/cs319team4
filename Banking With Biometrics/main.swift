@@ -21,6 +21,11 @@ func authCallback(response: BBResponse) {
         let firstViewController: UIViewController = storyboard.instantiateInitialViewController()!
         delegate.window!!.rootViewController = firstViewController
         
+        let alert: UIAlertController = UIAlertController(title: "You have been logged out", message: "Suspicious activity was detected. Please enter you credentials and log in again to continue.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+        
+        firstViewController.presentViewController(alert, animated: true, completion: nil)
+        
         print("User is not authorized")
     }
 }
