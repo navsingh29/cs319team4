@@ -12,10 +12,25 @@ class AccountsTableViewController: UITableViewController {
     
     var user: User?
     
-    //let accounts = ["Chequing", "Savings", "Credit Card", "Personal Loan", "Mortgage Account", "US Account"]
-    
     @IBAction func addIconTapped(sender: UIBarButtonItem) {
         createAlertView()
+    }
+    
+    @IBAction func logoutTapped(sender: UIBarButtonItem) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let storyboard: UIStoryboard = appDelegate.window!.rootViewController!.storyboard!
+        let firstViewController: UIViewController = storyboard.instantiateInitialViewController()!
+        appDelegate.window?.rootViewController = firstViewController
+        
+        createLogoutAlert()
+    }
+    
+    func createLogoutAlert() {
+        let alert: UIAlertController = UIAlertController(title: "You have been logged out", message: nil, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func createAlertView(){

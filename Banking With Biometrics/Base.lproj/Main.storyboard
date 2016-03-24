@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lg9-Bk-rLn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lg9-Bk-rLn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -226,10 +226,18 @@
                                     <action selector="transferTapped:" destination="MMW-Ej-m9c" eventType="touchUpInside" id="J8W-hA-BBN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHK-IA-gbd">
+                                <rect key="frame" x="276" y="457" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="MMW-Ej-m9c" eventType="touchUpInside" id="pdm-3r-DtB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zXF-Ad-Msk" firstAttribute="top" secondItem="aea-dp-SpA" secondAttribute="bottom" constant="15" id="5PY-2c-2gU"/>
+                            <constraint firstItem="ZHK-IA-gbd" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="7CY-4V-8am"/>
                             <constraint firstItem="JId-5y-4vc" firstAttribute="top" secondItem="5Ia-7i-Ff0" secondAttribute="bottom" constant="4" id="7O4-6I-nRU"/>
                             <constraint firstItem="wEE-LG-h16" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="9w0-I5-RXn"/>
                             <constraint firstItem="5Ia-7i-Ff0" firstAttribute="top" secondItem="O2q-C8-8rh" secondAttribute="bottom" constant="8" id="NJs-WO-XQi"/>
@@ -239,6 +247,7 @@
                             <constraint firstItem="wEE-LG-h16" firstAttribute="top" secondItem="JId-5y-4vc" secondAttribute="bottom" constant="16" id="STr-6x-3xr"/>
                             <constraint firstItem="JId-5y-4vc" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="m2Y-Tp-esp"/>
                             <constraint firstItem="dzY-Gq-HWf" firstAttribute="top" secondItem="wEE-LG-h16" secondAttribute="bottom" constant="8" id="uv3-rg-pl9"/>
+                            <constraint firstItem="ZHK-IA-gbd" firstAttribute="top" secondItem="zXF-Ad-Msk" secondAttribute="bottom" constant="17" id="xat-rp-VH4"/>
                             <constraint firstItem="zXF-Ad-Msk" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="yP1-KA-b1g"/>
                             <constraint firstItem="dzY-Gq-HWf" firstAttribute="centerX" secondItem="1fs-Vl-zsE" secondAttribute="centerX" id="yqh-Hj-sWj"/>
                         </constraints>
@@ -282,6 +291,11 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Accounts" id="Ggq-OQ-Q3J">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="boB-2j-rT3">
+                            <connections>
+                                <action selector="logoutTapped:" destination="GM2-IJ-rom" id="b97-Po-odx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0HC-1Z-3FV">
                             <connections>
                                 <action selector="addIconTapped:" destination="GM2-IJ-rom" id="Mvh-JL-ZkS"/>

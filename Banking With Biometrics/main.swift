@@ -14,8 +14,12 @@ let serverIP = "ws://btdemo.plurilock.com:8095" //"http://localhost:8080" //"ws:
 
 func authCallback(response: BBResponse) {
     if response == .NotAuthorized {
-        //let delegate = BBApplication.sharedApplication().delegate?
+        let delegate = BBApplication.sharedApplication().delegate!
         // TODO: Log the user out.
+        
+        let storyboard: UIStoryboard = delegate.window!!.rootViewController!.storyboard!
+        let firstViewController: UIViewController = storyboard.instantiateInitialViewController()!
+        delegate.window!!.rootViewController = firstViewController
         
         print("User is not authorized")
     }
