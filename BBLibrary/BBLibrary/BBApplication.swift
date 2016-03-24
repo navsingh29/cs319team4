@@ -12,13 +12,24 @@ public class BBApplication: UIApplication {
     internal var library: BBLibrary
     
     let nc = NSNotificationCenter.defaultCenter()
+    let panRec = UIPanGestureRecognizer()
+    let pinchRec = UIPinchGestureRecognizer()
     
     override init() {
         self.library = BBLibrary.get()!
         //self.delegate?.window = AppUiWin()
         super.init()
         nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
+        nc.addObserver(self, selector: "readKey:", name: "UITextFieldTextDidChangeNotification", object: nil)
+        nc.addObserver(self, selector: "winVisible:", name: "UIWindowDidBecomeVisibleNotification", object: nil)
         print("init")
+        
+    }
+    func winVisible(notification: NSNotification) {
+        panRec.addTarget(self, action: "draggedView:")
+//        (notification.object as! UITextField)
+        (notification.object as! UIWindow).rootViewController?.view.addGestureRecognizer(panRec)
+        print("Window is visible")
     }
 
     func tap() {
@@ -38,12 +49,23 @@ public class BBApplication: UIApplication {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         self.windows[0].rootViewController?.view.addGestureRecognizer(swipeDown)
+        
+        panRec.addTarget(self, action: "draggedView:")
+        self.windows[0].rootViewController?.view.addGestureRecognizer(panRec)
+        
+        pinchRec.addTarget(self, action: "pinchedView:")
+        self.windows[0].rootViewController?.view.addGestureRecognizer(pinchRec)
     }
     
+    func draggedView(gesture: UIPanGestureRecognizer) {
+        print("dragged")
+    }
+    func pinchedView(gesture: UIPinchGestureRecognizer) {
+        print("pinched")
+    }
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            
             
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.Right:
@@ -60,12 +82,24 @@ public class BBApplication: UIApplication {
         }
     }
     
+    func readKey(notification: NSNotification) {
+        self.library.captureKeyEvent(notification)
+    }
+    
     override public func sendEvent(event: UIEvent) {
-        print(self.applicationState.rawValue)
+//        print(self.applicationState.rawValue)
         super.sendEvent(event)
 //        print(self.windows[0].rootViewController?.view, "UIWindow view")
+//        print(self.windows.count, "num of windows")
+//        for var i = 0; i < self.windows.count; ++i {
+//                print(self.windows[i])
+//        }
+//        print("Gesture")
+//        print(event.touchesForGestureRecognizer(panRec))
+        print(event)
         if event.type == UIEventType.Touches {
-            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
+//            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
+            self.library.captureTouchEvent(event)
         } else {
             print("notTouchEvent:", event)
         }

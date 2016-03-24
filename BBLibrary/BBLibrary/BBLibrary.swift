@@ -11,11 +11,21 @@ import UIKit
 
 public enum BBComponents {
     case KeyEvents, TouchEvents, PhoneData
-    static let allValues = [KeyEvents, TouchEvents, PhoneData]
+    public static let allValues = [KeyEvents, TouchEvents, PhoneData]
 }
 
 public enum BBResponse {
     case Authorized, NotAuthorized, Unrecognized
+}
+
+internal enum BBEvent: CustomStringConvertible {
+    case Mono, Di
+    var description : String {
+        switch self {
+            case .Mono: return "MonoTouch";
+            case .Di: return "DiTouch";
+        }
+    }
 }
 
 public let sendEventNotification = "SendEventNotification"
@@ -26,14 +36,16 @@ public struct BBConfiguration {
     let cacheSize: Int
     let sendRate: Int
     let enabledComponents: [BBComponents]
+    let digraphTimeout: Int
     var callback: (BBResponse) -> ()
     //let touchListener // TODO: Implement some object that we can listen to for touches.
-    public init(serverIP: String, domainID: String, cacheSize: Int, sendRate: Int, enabledComponents: [BBComponents], callback: (BBResponse) -> ()) {
+    public init(serverIP: String, domainID: String, cacheSize: Int, sendRate: Int, enabledComponents: [BBComponents], digraphTimeout: Int, callback: (BBResponse) -> ()) {
         self.serverIP = serverIP
         self.domainID = domainID
         self.cacheSize = cacheSize
         self.sendRate = sendRate
         self.enabledComponents = enabledComponents
+        self.digraphTimeout = digraphTimeout
         self.callback = callback
     }
 }
