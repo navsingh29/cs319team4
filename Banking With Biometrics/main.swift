@@ -14,8 +14,17 @@ let serverIP = "ws://btdemo.plurilock.com:8095" //"http://localhost:8080" //"ws:
 
 func authCallback(response: BBResponse) {
     if response == .NotAuthorized {
-        //let delegate = BBApplication.sharedApplication().delegate?
+        let delegate = BBApplication.sharedApplication().delegate!
         // TODO: Log the user out.
+        
+        let storyboard: UIStoryboard = delegate.window!!.rootViewController!.storyboard!
+        let firstViewController: UIViewController = storyboard.instantiateInitialViewController()!
+        delegate.window!!.rootViewController = firstViewController
+        
+        let alert: UIAlertController = UIAlertController(title: "You have been logged out", message: "Suspicious activity was detected. Please enter you credentials and log in again to continue.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+        
+        firstViewController.presentViewController(alert, animated: true, completion: nil)
         
         print("User is not authorized")
     }

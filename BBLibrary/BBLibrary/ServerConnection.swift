@@ -91,6 +91,7 @@ internal class ServerConnection : WebSocketDelegate {
                 print("|| Sending data with url /api/users/ios_"+(jsonDict["userID"] as! String)+"_"+(jsonDict["domain"] as! String));
                 socket.writeString(jsonText as! String)
                 resultHandler(true)
+                
                 // TODO: For the moment true is being sent immediately, but ideally this should only be sent when writeString succeeds.
             } catch {
                 resultHandler(false)

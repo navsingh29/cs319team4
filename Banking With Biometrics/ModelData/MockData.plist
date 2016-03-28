@@ -6,6 +6,14 @@
 	<array>
 		<dict>
 			<key>Name</key>
+			<string>Secret Vault (For Tax Evasion Purposes)</string>
+			<key>Lat</key>
+			<real>-65.41466699999999</real>
+			<key>Long</key>
+			<real>-64.58363</real>
+		</dict>
+		<dict>
+			<key>Name</key>
 			<string>US Branch (Renton, WA)</string>
 			<key>Lat</key>
 			<real>47.483738</real>
