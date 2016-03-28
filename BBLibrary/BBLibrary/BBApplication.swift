@@ -19,6 +19,7 @@ public class BBApplication: UIApplication {
         self.library = BBLibrary.get()!
         //self.delegate?.window = AppUiWin()
         super.init()
+        
         nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
         nc.addObserver(self, selector: "readKey:", name: "UITextFieldTextDidChangeNotification", object: nil)
         nc.addObserver(self, selector: "winVisible:", name: "UIWindowDidBecomeVisibleNotification", object: nil)

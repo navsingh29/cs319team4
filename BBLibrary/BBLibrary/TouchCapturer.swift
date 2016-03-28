@@ -16,7 +16,8 @@ class TouchCapturer {
     private var eventType:BBEvent
     private var startTime:Double
     private var span:Double
-    
+    private var previousTouches:Set<UITouch>
+    private var done:Bool
     init (cache: Cache) {
         self.cache = cache
         self.count = 0
@@ -24,6 +25,8 @@ class TouchCapturer {
         self.eventType = .Mono
         self.startTime = 0
         self.span = 0
+        self.previousTouches = []
+        self.done = false
     }
     
     func processTouchEvent (event: UIEvent) {
@@ -37,8 +40,77 @@ class TouchCapturer {
             if touches.count > 1 {
                 print("multi touch")
                 for touch in touches {
+                    
                     currentTouch = touch
+                    let previousTouch = getPreviousTouch(previousTouches,touch: touch)
+                    if previousTouch != nil {
+                        previousTouches.remove(previousTouch!)
+                        switch currentTouch.phase {
+                        case .Began:
+//                            self.startTime = event.timestamp
+//                            self.eventType = .Mono
+                            print("Began")
+                            // event.timestamp.description is the same as event.timestamp
+                            print("self touchStartTime", self.startTime)
+                            print("time", event.timestamp)
+                            
+                        case .Moved:
+                            self.eventType = .Di
+//                            if self.startTime == 0 {
+//                                self.startTime = event.timestamp
+//                            } else {
+                                isEvent = true
+                                self.span = event.timestamp - self.startTime
+//                            }
+                            print("Moved")
+                        case .Stationary:
+                            print("Stationary")
+                        case .Ended:
+                            isEvent = true
+                            self.span = event.timestamp - self.startTime
+                            print("Ended", self.span)
+                        case .Cancelled:
+                            print("Cancelled")
+//                            if self.startTime != 0 {
+                                isEvent = true
+                                self.span = event.timestamp - self.startTime
+//                            }
+                        }
+
+                    } else {
+                        previousTouches.insert(currentTouch)
+                    }
+                    
+                    
+                    
+                    if isEvent {
+                        print("previousPhase", previousTouch?.phase.rawValue)
+                        print("currentPhase", currentTouch.phase.rawValue)
+                        print("isEmpty",previousTouches.isEmpty, previousTouches.count)
+                        if (previousTouch?.phase == .Began) && (currentTouch.phase != .Moved) {
+                            self.eventType = .Mono
+                        }
+                        if currentTouch.phase == .Ended || currentTouch.phase == .Cancelled {
+                            self.done = true
+                        } else {
+                            self.done = false
+                        }
+                        print("send packet")
+                        //deviceOrientation of a DiTouch event is the orientation at the second event
+                        dataPacket  = DataPacket(data: ["evtType":self.eventType.description, "startTime":String(format:"%f",self.startTime), "deviceOrientation":getDeviceOrientation(UIDevice.currentDevice()),"previousX":currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "previousY":currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description, "currentX":currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "currentY":currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "preciseCurrentX":currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "preciseCurrentY":currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description, "span":String(format:"%f", self.span),"screenOrientation":getInterfaceOrientation(BBApplication.sharedApplication())],datetime: NSDate())
+                        print(dataPacket.values)
+                        cache.store(dataPacket)
+                        self.count = 0
+                        isEvent = false
+                    }
+
                 }
+                
+                if previousTouches.isEmpty && !self.done {
+                    previousTouches = touches
+                    
+                }
+                self.startTime = event.timestamp
             } else {
                 for touch in touches {
                     currentTouch = touch
@@ -70,15 +142,18 @@ class TouchCapturer {
                         print("Ended", self.span)
                     case .Cancelled:
                         print("Cancelled")
+                        if self.startTime != 0 {
+                            isEvent = true
+                            self.span = event.timestamp - self.startTime
+                        }
                     }
                     
                     if isEvent {
-                        //            let evtType = self.eventType
                         print("evtType: ",self.eventType.description, "\nspan:",String(format:"%f", self.span),"\nevtStartTime: ", self.startTime,"\nx is:",currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description,"\npreciseX: ", currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description)
                         print("orientation: ", getDeviceOrientation(UIDevice.currentDevice()))
                         print("interfaceOrientation: ", getInterfaceOrientation(BBApplication.sharedApplication()))
-//                        print("interfaceOrientation: ", BBApplication.sharedApplication().supportedInterfaceOrientationsForWindow((BBApplication.sharedApplication().delegate?.window)!).rawValue)
                         
+                        //deviceOrientation of a DiTouch event is the orientation at the second event
                         dataPacket  = DataPacket(data: ["evtType":self.eventType.description, "startTime":String(format:"%f",self.startTime), "deviceOrientation":getDeviceOrientation(UIDevice.currentDevice()),"previousX":currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "previousY":currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description, "currentX":currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "currentY":currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "preciseCurrentX":currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "preciseCurrentY":currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description, "span":String(format:"%f", self.span),"screenOrientation":getInterfaceOrientation(BBApplication.sharedApplication())],datetime: NSDate())
                         cache.store(dataPacket)
                         self.count = 0
@@ -91,6 +166,20 @@ class TouchCapturer {
                 
             }
         }
+    }
+    
+    /* Check if a UITouch is a consecutive UITouch from a set of UITouch by comparing their x and y coordinates. */
+    private func getPreviousTouch(touches:Set<UITouch>, touch:UITouch) -> UITouch? {
+        if touches.isEmpty { return nil }
+        let x_coord = touch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description
+        let y_coord = touch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description
+        for touchEvent in touches {
+            if (x_coord == touchEvent.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description)
+                && (y_coord == touchEvent.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description) {
+                    return touchEvent
+            }
+        }
+        return nil
     }
     
     private func getDeviceOrientation(device: UIDevice) -> String {
