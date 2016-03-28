@@ -42,9 +42,15 @@ class AccountsTableViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
+            
+            let accountName = textField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            if accountName.isEmpty {
+                return
+            }
+            
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let moc = appDelegate.managedObjectContext
-            Account.create(moc, user: self.user, accountName: textField.text)
+            Account.create(moc, user: self.user, accountName: accountName)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
             })

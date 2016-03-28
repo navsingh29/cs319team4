@@ -39,6 +39,7 @@ class TransferViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
         pickerView.dataSource = self
         pickerView.delegate = self
     }

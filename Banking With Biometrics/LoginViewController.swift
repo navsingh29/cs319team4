@@ -40,6 +40,11 @@ class LoginViewController: UIViewController {
     @IBAction func cancel(segue:UIStoryboardSegue) {
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "loginSegue" {
             let loginSuccess = areCredentialsCorrect(username.text!, password: password.text!)
