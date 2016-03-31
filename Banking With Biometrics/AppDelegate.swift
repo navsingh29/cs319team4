@@ -12,31 +12,14 @@ import BBLibrary
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    internal let library: BBLibrary
+    
     let serverIP = "ws://btdemo.plurilock.com:8095"
     var window: UIWindow?
 //    lazy var window: UIWindow? = {
 //        let window = AppUiWin()
 //        return window
 //    }()
-    let nc = NSNotificationCenter.defaultCenter()
-    
-    override init() {
-        let configuration = BBConfiguration(serverIP: serverIP, domainID: "testDomainT4", cacheSize: 1024, sendRate: 10, enabledComponents: [.TouchEvents, .KeyEvents], callback: {_ in})
-        self.library = BBLibrary(args: configuration)
-        self.library.setUserID("testUserT4")
-        super.init()
-        print("init")
-    }
-    
-    func processEvent(event: UIEvent) {
-         self.library.captureTouchEvent(event)
-    }
-    
-    func readKey(notification: NSNotification) {
-        self.library.captureKeyEvent(notification)
-    }
-    
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -128,6 +111,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

@@ -11,7 +11,6 @@ import Starscream
 
 internal class ServerConnection : WebSocketDelegate {
     let authHandler: (BBResponse) -> ()
-    //let socket: SocketIOClient
     let socket: Starscream.WebSocket
     let domainID: String
     var userID: String = ""
@@ -92,6 +91,7 @@ internal class ServerConnection : WebSocketDelegate {
                 print("|| Sending data with url /api/users/ios_"+(jsonDict["userID"] as! String)+"_"+(jsonDict["domain"] as! String));
                 socket.writeString(jsonText as! String)
                 resultHandler(true)
+                
                 // TODO: For the moment true is being sent immediately, but ideally this should only be sent when writeString succeeds.
             } catch {
                 resultHandler(false)
@@ -132,8 +132,15 @@ internal class ServerConnection : WebSocketDelegate {
             
             resultHandler(true)
             
-            // TODO: Figure out the appropriate BBResponse.
-            self.authHandler(BBResponse.Authorized)
+            let responseArr = (response[0] as! String).componentsSeparatedByString("$")
+            
+            if responseArr[1] == "Ack" {
+                self.authHandler(BBResponse.Authorized)
+            } else if responseArr[1] == "lock" {
+                self.authHandler(BBResponse.NotAuthorized)
+            } else {
+                self.authHandler(BBResponse.Unrecognized)
+            }
         }
     }
 }

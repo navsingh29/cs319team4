@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import BBLibrary
 
 class LoginViewController: UIViewController {
     
@@ -24,6 +25,11 @@ class LoginViewController: UIViewController {
         if !loginSuccess {
             passwordMismatch.hidden = false
         }
+        
+        if let library = BBLibrary.get() {
+            library.setUserID(usernameText)
+        }
+        
         print("Login success: \(String(loginSuccess))")
     }
     
@@ -32,6 +38,11 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func cancel(segue:UIStoryboardSegue) {
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {

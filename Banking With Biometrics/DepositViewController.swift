@@ -37,6 +37,7 @@ class DepositViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
         self.pickerView.dataSource = self;
         self.pickerView.delegate = self;
     }

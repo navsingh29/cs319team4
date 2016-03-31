@@ -38,6 +38,10 @@ class RegisterViewController : UIViewController {
         self.performSegueWithIdentifier("unwindAndRegister", sender: self)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+    }
     
     func loadData(moc:NSManagedObjectContext, user: User?){
         let path = NSBundle.mainBundle().pathForResource("MockData", ofType: "plist")
