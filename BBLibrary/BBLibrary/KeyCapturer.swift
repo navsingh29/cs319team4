@@ -8,39 +8,64 @@
 
 import Foundation
 import UIKit
+import QuartzCore
 
 class KeyCapturer {
     
     let cache: Cache
-    var prevTextSize = 0
+    let DigraphThreshold = 10.0
+    let decimalPlaces = 4
+    
+    var isFirstKey = true
+    var firstKeyTime = 0.0
+    var firstKeyCode:UInt32 = 0
+    var secondKeyCode:UInt32 = 0
+    var span = 0.0
+    var spanRounded = NSNumberFormatter()
     
     init (cache: Cache) {
         self.cache = cache
     }
     
     func processKeyEvent (notification: NSNotification) {
-        //let keyPressed = (notification.object as! UITextField).text!
-        let textSize = ((notification.object as! UITextField).text!).characters.count
-        let str = ((notification.object as!UITextField).text!).characters
-        if (prevTextSize == textSize+1 && prevTextSize>0) {
-            print("Key Pressed: Backspace")
-            prevTextSize = textSize
-            print("Text size = \(textSize)")
-            print("Prev text = \(prevTextSize)")
+        
+        var dataPacket: DataPacket
+        var dataPacket2: DataPacket
+        let str = ((notification.object as!UITextField).text!)
+        
+        spanRounded.minimumFractionDigits = decimalPlaces
+        spanRounded.maximumFractionDigits = decimalPlaces
+        
+        if (str.isEmpty) {
+            // Text erased, do nothing.
         }
         else {
-            print("Key Pressed: \(str.last!)")
-            prevTextSize = textSize
+            if ((CACurrentMediaTime()-firstKeyTime)<=DigraphThreshold) {
+                secondKeyCode = str.unicodeScalars.last!.value
+                isFirstKey = false
+                span = CACurrentMediaTime() - firstKeyTime
+                firstKeyTime = CACurrentMediaTime()
+                dataPacket2 = DataPacket.init(data: ["evtType":  "mono",
+                                                     "key":      "\(firstKeyCode)"])
+                dataPacket = DataPacket.init(data: ["evtType":  "di",
+                                                    "fromKey":  "\(firstKeyCode)",
+                                                    "toKey":    "\(secondKeyCode)",
+                                                    "span":     "\(spanRounded.stringFromNumber(span)!) seconds"])
+                print(dataPacket.values)
+                print(dataPacket2.values)
+                cache.store(dataPacket2)
+                cache.store(dataPacket)
+            }
+            else {
+                firstKeyCode = str.unicodeScalars.last!.value
+                isFirstKey = true
+                firstKeyTime = CACurrentMediaTime()
+                dataPacket = DataPacket.init(data: ["evtType":  "mono",
+                                                    "key":      "\(firstKeyCode)"])
+                print(dataPacket.values)
+                cache.store(dataPacket)
+            }
         }
-        //print("Monograph: \(getMonograph(notification))")
-    }
-    
-    func getMonograph (notification: NSNotification) -> Double{
-        var info:[NSObject : AnyObject] = notification.userInfo!
-        var value:Double = (info[UIKeyboardAnimationDurationUserInfoKey] as! Double)
-        //var duration: NSTimeInterval = 0
-        //value.getValue(duration)
-        return value
     }
     
 }

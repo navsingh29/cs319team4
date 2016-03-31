@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         nc.addObserver(self, selector: "readKey:", name: "UITextFieldTextDidChangeNotification", object: nil)
+        //nc.addObserver(self, selector: "readKey:", name: "UIKeyboardWillShowNotification", object: nil)
         return true
     }
     
