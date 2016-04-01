@@ -37,7 +37,7 @@ class TouchCapturer {
         print("|| TouchCapturer Event\n")
         if let temp = event.allTouches() {
             touches = temp
-            if touches.count > 1 {
+            if touches.count >= 1 {
                 print("multi touch")
                 for touch in touches {
                     
@@ -106,9 +106,9 @@ class TouchCapturer {
 
                 }
                 
+                
                 if previousTouches.isEmpty && !self.done {
                     previousTouches = touches
-                    
                 }
                 self.startTime = event.timestamp
             } else {
