@@ -58,6 +58,7 @@ public class BBLibrary {
         BBLibrary.config = config
     }
     
+    // TODO: Make this function throw an error.
     public class func get() -> BBLibrary? {
         if let lib = BBLibrary.library {
             return lib

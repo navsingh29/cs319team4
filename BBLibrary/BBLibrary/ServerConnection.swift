@@ -62,6 +62,7 @@ internal class ServerConnection : WebSocketDelegate {
     func websocketDidReceiveMessage(socket: WebSocket, text: String) {
         print("|| Got some text: \(text)")
         testCallback("message", text)
+        self.parseResponse(text);
     }
     
     func websocketDidReceiveData(socket: WebSocket, data: NSData) {
@@ -131,12 +132,18 @@ internal class ServerConnection : WebSocketDelegate {
             print("Got ack with data: (response)")
             
             resultHandler(true)
-            
-            let responseArr = (response[0] as! String).componentsSeparatedByString("$")
-            
+            self.parseResponse(response[0] as! String);
+        }
+    }
+    
+    private func parseResponse(response: String) {
+        let responseArr = response.componentsSeparatedByString("$")
+        
+        if responseArr.count > 1 {
             if responseArr[1] == "Ack" {
                 self.authHandler(BBResponse.Authorized)
-            } else if responseArr[1] == "lock" {
+            } else if responseArr[1] == "lock" && drand48() < 0.2 {
+                // TODO: Remove the above test code which only accepts 20% of failures.
                 self.authHandler(BBResponse.NotAuthorized)
             } else {
                 self.authHandler(BBResponse.Unrecognized)
