@@ -81,8 +81,6 @@ class TouchCapturer {
                         previousTouches.insert(currentTouch)
                     }
                     
-                    
-                    
                     if isEvent {
                         print("previousPhase", previousTouch?.phase.rawValue)
                         print("currentPhase", currentTouch.phase.rawValue)
@@ -97,7 +95,18 @@ class TouchCapturer {
                         }
                         print("send packet")
                         //deviceOrientation of a DiTouch event is the orientation at the second event
-                        dataPacket  = DataPacket(data: ["evtType":self.eventType.description, "startTime":String(format:"%f",self.startTime), "deviceOrientation":getDeviceOrientation(UIDevice.currentDevice()),"previousX":currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "previousY":currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description, "currentX":currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "currentY":currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "preciseCurrentX":currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description, "preciseCurrentY":currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description, "span":String(format:"%f", self.span),"screenOrientation":getInterfaceOrientation(BBApplication.sharedApplication())],datetime: NSDate())
+                        dataPacket  = DataPacket(data: [
+                            "evtType": self.eventType.description,
+                            "startTime": String(format:"%f", self.startTime),
+                            "deviceOrientation": getDeviceOrientation(UIDevice.currentDevice()),
+                            "previousX": currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description,
+                            "previousY": currentTouch.previousLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description,
+                            "currentX": currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description,
+                            "currentY": currentTouch.locationInView((BBApplication.sharedApplication().delegate?.window)!).x.description,
+                            "preciseCurrentX": currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).x.description,
+                            "preciseCurrentY": currentTouch.preciseLocationInView((BBApplication.sharedApplication().delegate?.window)!).y.description,
+                            "span":String(format:"%f", self.span),
+                            "screenOrientation": getInterfaceOrientation(BBApplication.sharedApplication())],datetime: NSDate())
                         print(dataPacket.values)
                         cache.store(dataPacket)
                         self.count = 0

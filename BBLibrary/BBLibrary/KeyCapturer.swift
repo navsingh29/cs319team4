@@ -45,23 +45,32 @@ class KeyCapturer {
                 isFirstKey = false
                 span = CACurrentMediaTime() - firstKeyTime
                 firstKeyTime = CACurrentMediaTime()
-                dataPacket2 = DataPacket.init(data: ["evtType":  "mono",
-                                                     "key":      "\(firstKeyCode)"])
-                dataPacket = DataPacket.init(data: ["evtType":  "di",
-                                                    "fromKey":  "\(firstKeyCode)",
-                                                    "toKey":    "\(secondKeyCode)",
-                                                    "span":     "\(spanRounded.stringFromNumber(span)!) seconds"])
+                
+                dataPacket = DataPacket.init(data: [
+                    "evtType":  "DiKey",
+                    "fromKey":  "\(firstKeyCode)",
+                    "toKey":    "\(secondKeyCode)",
+                    "span":     "\(spanRounded.stringFromNumber(span)!) seconds"])
+                
                 print(dataPacket.values)
+                cache.store(dataPacket)
+                
+                /*
+                dataPacket2 = DataPacket.init(data: [
+                    "evtType": "MonoKey",
+                    "key":     "\(firstKeyCode)"])
+                
                 print(dataPacket2.values)
                 cache.store(dataPacket2)
-                cache.store(dataPacket)
-            }
-            else {
+                */
+            } else {
                 firstKeyCode = str.unicodeScalars.last!.value
                 isFirstKey = true
                 firstKeyTime = CACurrentMediaTime()
-                dataPacket = DataPacket.init(data: ["evtType":  "mono",
-                                                    "key":      "\(firstKeyCode)"])
+                dataPacket = DataPacket.init(data: [
+                    "evtType":  "MonoKey",
+                    "key":      "\(firstKeyCode)"])
+                
                 print(dataPacket.values)
                 cache.store(dataPacket)
             }

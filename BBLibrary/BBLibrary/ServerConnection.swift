@@ -56,6 +56,7 @@ internal class ServerConnection : WebSocketDelegate {
     
     func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
         print("|| Websocket is disconnected: \(error?.localizedDescription)")
+        socket.connect()
         testCallback("disconnect", nil)
     }
     
