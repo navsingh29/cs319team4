@@ -1,10 +1,11 @@
 var http = require('http');
 
 var client = 'ios';
-var user = 'admin';
-var domain = 'testDomainT4';
+var user = process.argv[2] || 'admin';
+var domain =  process.argv[3] || 'testDomainT4';
 
 var url = 'http://btdemo.plurilock.com:8090/api/users/' + client + '_' + user + '_' + domain;
+console.log("Querying url:", url);
 var packetCount = 0;
 
 var RESET   = "\033[0m";
@@ -58,7 +59,7 @@ function getData() {
 							break;
 					}
 
-					console.log(colour, JSON.stringify(evt), RESET);
+					console.log(RESET, "-" + colour, JSON.stringify(evt), RESET);
 				};
 			};
 
