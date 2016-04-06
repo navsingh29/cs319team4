@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let serverIP = "ws://btdemo.plurilock.com:8095"
     var window: UIWindow?
-//    lazy var window: UIWindow? = {
-//        let window = AppUiWin()
-//        return window
-//    }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

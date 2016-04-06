@@ -50,6 +50,16 @@ public struct BBConfiguration {
     }
 }
 
+internal var deviceSupportTouchForce = false
+
+internal func setDeviceSupTouchForce(support: Bool) {
+    deviceSupportTouchForce = support
+}
+
+internal func getDeviceSupTouchForce() -> Bool {
+    return deviceSupportTouchForce
+}
+
 public class BBLibrary {
     static var library : BBLibrary?
     static var config : BBConfiguration?
@@ -81,6 +91,7 @@ public class BBLibrary {
     let cache: Cache
     
     public init(args: BBConfiguration) {
+        
         self.config = args
         
         self.server = ServerConnection(ip: args.serverIP, domainID: args.domainID, callback: args.callback)

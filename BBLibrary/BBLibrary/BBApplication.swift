@@ -17,18 +17,17 @@ public class BBApplication: UIApplication {
     
     override init() {
         self.library = BBLibrary.get()!
-        //self.delegate?.window = AppUiWin()
         super.init()
         
-        nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
-        nc.addObserver(self, selector: "readKey:", name: "UITextFieldTextDidChangeNotification", object: nil)
-        nc.addObserver(self, selector: "winVisible:", name: "UIWindowDidBecomeVisibleNotification", object: nil)
+        nc.addObserver(self, selector: #selector(BBApplication.launched), name: "UIApplicationDidFinishLaunchingNotification", object: nil)
+        nc.addObserver(self, selector: #selector(BBApplication.readKey(_:)), name: "UITextFieldTextDidChangeNotification", object: nil)
+        nc.addObserver(self, selector: #selector(BBApplication.winVisible(_:)), name: "UIWindowDidBecomeVisibleNotification", object: nil)
         print("init")
         
     }
+    
     func winVisible(notification: NSNotification) {
         panRec.addTarget(self, action: "draggedView:")
-//        (notification.object as! UITextField)
         (notification.object as! UIWindow).rootViewController?.view.addGestureRecognizer(panRec)
         print("Window is visible")
     }
@@ -38,10 +37,18 @@ public class BBApplication: UIApplication {
     }
     
     func launched() {
+        if self.windows[0].rootViewController?.traitCollection.forceTouchCapability == UIForceTouchCapability.Available
+        {
+           deviceSupportTouchForce = true
+        } else {
+           deviceSupportTouchForce = false
+        }
+
         let aSelector : Selector = "tap"
         let tapGesture = UITapGestureRecognizer(target: self, action: aSelector)
         tapGesture.numberOfTapsRequired = 1
         self.windows[0].rootViewController?.view.addGestureRecognizer(tapGesture)
+       
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
@@ -54,7 +61,7 @@ public class BBApplication: UIApplication {
         panRec.addTarget(self, action: "draggedView:")
         self.windows[0].rootViewController?.view.addGestureRecognizer(panRec)
         
-        pinchRec.addTarget(self, action: "pinchedView:")
+        pinchRec.addTarget(self, action: #selector(BBApplication.pinchedView(_:)))
         self.windows[0].rootViewController?.view.addGestureRecognizer(pinchRec)
     }
     
@@ -88,22 +95,16 @@ public class BBApplication: UIApplication {
     }
     
     override public func sendEvent(event: UIEvent) {
-//        print(self.applicationState.rawValue)
         super.sendEvent(event)
-//        print(self.windows[0].rootViewController?.view, "UIWindow view")
-//        print(self.windows.count, "num of windows")
-//        for var i = 0; i < self.windows.count; ++i {
-//                print(self.windows[i])
-//        }
-//        print("Gesture")
-//        print(event.touchesForGestureRecognizer(panRec))
         print(event)
         if event.type == UIEventType.Touches {
-//            BBApplication.sharedApplication().delegate?.performSelector("processEvent:",withObject: event)
             self.library.captureTouchEvent(event)
         } else {
+            // Can be used to capture motion events and remote events(such as earphones)
             print("notTouchEvent:", event)
         }
     }
+    
+    
     
 }
