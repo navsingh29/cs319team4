@@ -30,7 +30,6 @@ class KeyCapturer {
     func processKeyEvent (notification: NSNotification) {
         
         var dataPacket: DataPacket
-        var dataPacket2: DataPacket
         let str = ((notification.object as!UITextField).text!)
         
         spanRounded.minimumFractionDigits = decimalPlaces

@@ -11,11 +11,13 @@ import Foundation
 
 class DataPacket {
     let timestamp: String
-    let values: [String:String];
+    let values: [String:String]
+    let appName: String;
     
     init(data: [String:String], datetime: NSDate = NSDate()) {
         self.values = data;
         self.timestamp = datetime.description
+        self.appName = BBLibrary.applicationName
     }
 }
 
@@ -40,7 +42,7 @@ class Cache {
         
         // Put the packet into the cache.
         data.append(packet);
-
+       
         // Check if the buffer size has been reached.
         if (data.count >= bufferSize) {
             print("|| Flushing cache buffer")

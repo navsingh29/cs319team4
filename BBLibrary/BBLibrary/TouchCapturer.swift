@@ -51,12 +51,11 @@ class TouchCapturer {
         var dataPacket: DataPacket
         var currentTouch:UITouch
         
-        print("|| TouchCapturer Event\n")
+        print("|| TouchCapturer Event")
         if let temp = event.allTouches() {
             touches = temp
             if touches.count >= 1 {
                 for touch in touches {
-                    print("touch type", (touch.type.rawValue))
                     currentTouch = touch
                     let previousTouchCount = getPreviousTouchCount(touch)
                     // For all End UITouchPhase, its previous location is not the same as the location of the previous UITouch,
@@ -96,12 +95,11 @@ class TouchCapturer {
                             isEvent = true
                         }
                     } else {
-                        print("insert ")
                         self.prevTouches.append(TouchCount(count: 0,touch: currentTouch))
                     }
                     
                     if isEvent {
-                        print("send the following packet:")
+                        print("|| send the following packet:")
                         //deviceOrientation of a DiTouch event is the orientation at the second event
                         let touchType = getTouchType(currentTouch)
                         let radius = touch.majorRadius
@@ -171,8 +169,6 @@ class TouchCapturer {
             return "indirect"
         case .Stylus:
             return "stylus"
-        default:
-            return "unknown"
         }
     }
 
@@ -193,8 +189,6 @@ class TouchCapturer {
             return "faceUp"
         case .FaceDown:
             return "faceDown"
-        default:
-            return "unknown"
         }
     }
     
@@ -211,8 +205,6 @@ class TouchCapturer {
             return "landscapeLeft"
         case .LandscapeRight:
             return "landscapeRight"
-        default:
-            return "unknown"
         }
     }
 }

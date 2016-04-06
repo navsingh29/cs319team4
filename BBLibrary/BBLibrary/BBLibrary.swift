@@ -63,6 +63,7 @@ internal func getDeviceSupTouchForce() -> Bool {
 public class BBLibrary {
     static var library : BBLibrary?
     static var config : BBConfiguration?
+    static var applicationName = ""
     
     public class func configure(config: BBConfiguration) {
         BBLibrary.config = config
@@ -78,7 +79,6 @@ public class BBLibrary {
         } else {
             print("BBConfiguration has not been defined.")
         }
-
         return nil
     }
     
