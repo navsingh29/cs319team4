@@ -18,8 +18,8 @@ public class BBApplication: UIApplication {
     override init() {
         self.library = BBLibrary.get()!
         super.init()
-        nc.addObserver(self, selector: #selector(BBApplication.launched), name: "UIApplicationDidFinishLaunchingNotification", object: nil)
-        nc.addObserver(self, selector: #selector(BBApplication.readKey(_:)), name: "UITextFieldTextDidChangeNotification", object: nil)
+        nc.addObserver(self, selector: "launched", name: "UIApplicationDidFinishLaunchingNotification", object: nil)
+        nc.addObserver(self, selector: "readKey:", name: "UITextFieldTextDidChangeNotification", object: nil)
         let applicationName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
         BBLibrary.applicationName = applicationName
         print("|| Init BBApplication")
