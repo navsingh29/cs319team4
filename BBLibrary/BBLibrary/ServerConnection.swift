@@ -79,6 +79,7 @@ internal class ServerConnection : WebSocketDelegate {
         if !socket.isConnected {
             // There is no authorized user yet to send this data for. Try again once the user has logged in.
             print("|| Server is not connected")
+            socket.connect()
             resultHandler(false)
         } else if userID == "" {
             // The server is not connected.
