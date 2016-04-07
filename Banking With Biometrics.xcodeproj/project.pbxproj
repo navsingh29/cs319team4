@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		780E579E1C8E0CA700F8A015 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E579D1C8E0CA700F8A015 /* main.swift */; };
-		780E57A11C8E0CB400F8A015 /* UIWindowSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E57A01C8E0CB400F8A015 /* UIWindowSub.swift */; };
-		780E57A31C8E0CBB00F8A015 /* AppUIWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E57A21C8E0CBB00F8A015 /* AppUIWin.swift */; };
 		7817A71A1C6804A50021C5CA /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */; };
 		782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 782A58261C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld */; };
 		785A910E1C86CE3900EEC1D6 /* BBLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 41564CD01C72577D00DBB70E /* BBLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -91,8 +89,6 @@
 /* Begin PBXFileReference section */
 		41564CCA1C72577B00DBB70E /* BBLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BBLibrary.xcodeproj; path = BBLibrary/BBLibrary.xcodeproj; sourceTree = "<group>"; };
 		780E579D1C8E0CA700F8A015 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		780E57A01C8E0CB400F8A015 /* UIWindowSub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindowSub.swift; sourceTree = "<group>"; };
-		780E57A21C8E0CBB00F8A015 /* AppUIWin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUIWin.swift; sourceTree = "<group>"; };
 		7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
 		782A58271C78456300F53C98 /* BankingWithBiometrics.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BankingWithBiometrics.xcdatamodel; sourceTree = "<group>"; };
 		786893521C8E03780022B246 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -210,8 +206,6 @@
 				7817A7191C6804A50021C5CA /* AccountsTableViewController.swift */,
 				786893521C8E03780022B246 /* RegisterViewController.swift */,
 				788194B01C685C3C00D3821D /* TransactionsTableViewController.swift */,
-				780E57A01C8E0CB400F8A015 /* UIWindowSub.swift */,
-				780E57A21C8E0CBB00F8A015 /* AppUIWin.swift */,
 				780E579D1C8E0CA700F8A015 /* main.swift */,
 				78D9E7AD1C8F3BB10031FAA3 /* DepositViewController.swift */,
 				78D9E7AF1C8F46900031FAA3 /* TransferViewController.swift */,
@@ -414,9 +408,7 @@
 				786893531C8E03780022B246 /* RegisterViewController.swift in Sources */,
 				782A58281C78456300F53C98 /* BankingWithBiometrics.xcdatamodeld in Sources */,
 				78E2A5D01C921DE4002325E4 /* LocationsViewController.swift in Sources */,
-				780E57A31C8E0CBB00F8A015 /* AppUIWin.swift in Sources */,
 				780E579E1C8E0CA700F8A015 /* main.swift in Sources */,
-				780E57A11C8E0CB400F8A015 /* UIWindowSub.swift in Sources */,
 				786893631C8E0B450022B246 /* Transaction+CoreDataProperties.swift in Sources */,
 				786893651C8E0B450022B246 /* User+CoreDataProperties.swift in Sources */,
 				786893641C8E0B450022B246 /* User.swift in Sources */,

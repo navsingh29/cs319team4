@@ -18,8 +18,12 @@ func authCallback(response: BBResponse) {
         
         let storyboard: UIStoryboard = delegate.window!!.rootViewController!.storyboard!
         let firstViewController: UIViewController = storyboard.instantiateInitialViewController()!
-        delegate.window!!.rootViewController = firstViewController
         
+        if let library = BBLibrary.get() {
+            library.setUserID("")
+        }
+        
+        delegate.window!!.rootViewController = firstViewController
         let alert: UIAlertController = UIAlertController(title: "You have been logged out", message: "Suspicious activity was detected. Please enter you credentials and log in again to continue.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
         
