@@ -12,12 +12,10 @@ import Foundation
 class DataPacket {
     let timestamp: String
     let values: [String:String]
-    let appName: String;
-    
+
     init(data: [String:String], datetime: NSDate = NSDate()) {
         self.values = data;
         self.timestamp = datetime.description
-        self.appName = BBLibrary.applicationName
     }
 }
 

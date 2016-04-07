@@ -121,6 +121,7 @@ internal class ServerConnection : WebSocketDelegate {
         return [
             "btClientType": "ios",
             "btClientVersion": BBLibraryVersionNumber,
+            "btAppName": BBLibrary.applicationName,
             "userID": userID,
             "domain": domainID,
             "data": data,
